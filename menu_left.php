@@ -19,6 +19,93 @@
                 <a href="#" class="d-block">Chayapat Niropas</a>
             </div>
         </div>
+        
+        <nav class="mt-2" >
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">Systems</li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/rr" class="nav-link">
+                        <i class="nav-icon fa fa-dolly"></i>
+                        <p>
+                            Store
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/wd" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                        Purchase
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/inventory" class="nav-link">
+                        <i class="nav-icon fa fa-id-badge"></i>
+                        <p>
+                        HR
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/unit" class="nav-link">
+                        <i class="nav-icon 	fa fa-dollar-sign"></i>
+                        <p>
+                        Sale
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/production/wo" class="nav-link">
+                        <i class="nav-icon fas fa-hammer"></i>
+                        <p>
+                        Production
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/project" class="nav-link">
+                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                        <p>
+                        Planner
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/reports" class="nav-link">
+                        <i class="nav-icon 	fa fa-hard-hat"></i>
+                        <p>
+                        Engineer
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/reports" class="nav-link">
+                        <i class="nav-icon 	fa fa-tachometer-alt"></i>
+                        <p>
+                        QC
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/reports" class="nav-link">
+                        <i class="nav-icon 	fa fa-warehouse"></i>
+                        <p>
+                        Warehouse
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/reports" class="nav-link">
+                        <i class="nav-icon 	fa fa-cash-register"></i>
+                        <p>
+                        Accounting
+                        </p>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
 
         <nav class="mt-2" id="sideStore" style="display:none;">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
