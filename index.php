@@ -109,6 +109,7 @@
     </div>
     <?php include_once('import_js.php'); ?>
 
+    <?php include_once('js.php'); ?>
 </body>
 
 </html>
