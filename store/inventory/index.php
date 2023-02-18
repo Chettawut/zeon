@@ -10,7 +10,7 @@ include_once('../../conn.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ข้อมูลวัสดุ</title>
+    <title>Inventory</title>
 
     <?php 
     include_once('css.php'); 
@@ -39,7 +39,7 @@ include_once('../../conn.php');
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">ข้อมูลวัสดุ</h1>
+                            <h1 class="m-0"><i class="nav-icon fa fa-cube"></i> Inventory</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -85,6 +85,7 @@ include_once('../../conn.php');
                                         <tr>
                                             <th width="10%">รหัสวัสดุ</th>
                                             <th width="40%">ชื่อวัสดุ</th>
+                                            <th width="20%">ประเภทวัสดุ</th>
                                             <th width="12%" style="text-align:right">จำนวนสต๊อก</th>
                                             <th width="14%" style="text-align:center">หน่วย</th>
 

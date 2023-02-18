@@ -12,7 +12,7 @@
 
     $strSQL = "UPDATE stock SET ";
     $strSQL .= "stcode='".$_POST["stcode"]."',stname1='".$_POST["stname1"]."',unit='".$_POST["unit"]."',stmin1='".$_POST["stmin1"]."' ";
-    $strSQL .= ",stmin2='".$_POST["stmin2"]."',sellprice='".$_POST["sellprice"]."',status='".$_POST["status"]."',s_date='".date("Y-m-d")."',s_time='".date("H:i:s")."'";
+    $strSQL .= ",stmin2='".$_POST["stmin2"]."',stmax='".$_POST["stmax"]."',type='".$_POST["type"]."',status='".$_POST["status"]."',s_date='".date("Y-m-d")."',s_time='".date("H:i:s")."'";
     $strSQL .= "WHERE code= '".$_POST["code"]."' ";
 
     

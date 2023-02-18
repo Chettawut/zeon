@@ -12,18 +12,52 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?php echo PATH; ?>/img/default.jpg" class="img-circle elevation-2"
-                    alt="User Image">
+                <img src="<?php echo PATH; ?>/img/default.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Chayapat Niropas</a>
+                <a href="#" class="d-block"><?php echo $_SESSION['firstname'].' '.$_SESSION['lastname'];?> </a>
             </div>
         </div>
-        
-        <nav class="mt-2" >
+
+        <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Systems</li>
                 <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/customer" class="nav-link">
+                    <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>
+                        Sales forecast
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/customer" class="nav-link">
+                    <i class="nav-icon fas fa-light fa-cubes"></i>
+                        <p>
+                        Reservation of material
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-header">Data</li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/store/inventory" class="nav-link">
+                        <i class="nav-icon fa fa-cube"></i>
+                        <p>
+                            Inventory
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo PATH; ?>/engineer/bom" class="nav-link">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p>
+                            Bill of Materials
+                        </p>
+                    </a>
+                </li>
+
+                <!-- <li class="nav-item">
                     <a href="<?php echo PATH; ?>/store" class="nav-link">
                         <i class="nav-icon fa fa-dolly"></i>
                         <p>
@@ -102,12 +136,12 @@
                         Accounting
                         </p>
                     </a>
-                </li>
+                </li> -->
 
             </ul>
         </nav>
 
-       
+
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

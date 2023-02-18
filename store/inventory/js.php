@@ -2,7 +2,7 @@
 $(function() {
 
     $("#sideStore").show()
-    
+
     $.ajax({
         type: "POST",
         url: "ajax/get_stock.php",
@@ -11,6 +11,13 @@ $(function() {
 
             for (count = 0; count < result.stcode.length; count++) {
 
+                let type
+                if (result.type[count] == 'FG')
+                    type = 'Finish Goods'
+                else if (result.type[count] == 'MAT')
+                    type = 'Material'
+                else
+                type = ''
 
                 $('#tableStock').append(
                     '<tr data-toggle="modal" data-target="#modal_edit" id="' + result
@@ -18,6 +25,7 @@ $(function() {
                         count] + '" data-whatever="' + result.code[
                         count] + '">.<td>' + result.stcode[count] + '</td><td>' +
                     result.stname1[count] + '</td><td style="text-align:right">' +
+                    type + '</td><td style="text-align:right">' +
                     result.amount1[count] + '</td><td  style="text-align:center">' + result
                     .unit[count] + '</td></tr>');
             }
@@ -55,14 +63,18 @@ $('#modal_edit').on('show.bs.modal', function(event) {
         type: "POST",
         url: "ajax/getsup_stock.php",
         data: "idcode=" + recipient,
-        success: function(result) {            
+        success: function(result) {
+
+
+
             modal.find('.modal-body #code').val(result.code);
             modal.find('.modal-body #stcode').val(result.stcode);
-            modal.find('.modal-body #stname1').val(result.stname1);            
+            modal.find('.modal-body #stname1').val(result.stname1);
             modal.find('.modal-body #unit').val(result.unit);
             modal.find('.modal-body #stmin1').val(result.stmin1);
             modal.find('.modal-body #stmin2').val(result.stmin2);
-            modal.find('.modal-body #sellprice').val(result.sellprice);
+            modal.find('.modal-body #stmax').val(result.stmax);            
+            modal.find('.modal-body #type').val(result.type);
             modal.find('.modal-body #status').val(result.status);
 
 

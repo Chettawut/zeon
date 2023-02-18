@@ -3,10 +3,10 @@
     include('../../../conn.php');
     date_default_timezone_set('Asia/Bangkok');
     
-    $StrSQL = "INSERT INTO stock (`stcode`, `stname1`, `unit`, `stmin1`, `stmin2` ,`sellprice`, `status`,`s_date`,`s_time`) ";
+    $StrSQL = "INSERT INTO stock (`stcode`, `stname1`, `unit`, `stmin1`, `stmin2`, `stmax` ,`type`, `status`,`s_date`,`s_time`) ";
     $StrSQL .= "VALUES (";
     $StrSQL .= "'".$_POST["add_stcode"]."','".$_POST["add_stname1"]."','".$_POST["add_unit"]."','".$_POST["add_stmin1"]."','".$_POST["add_stmin2"]."' ";
-    $StrSQL .= ",'".$_POST["add_sellprice"]."','Y','".date("Y-m-d")."','".date("H:i:s")."' ";
+    $StrSQL .= ",'".$_POST["add_stmax"]."','".$_POST["add_type"]."','Y','".date("Y-m-d")."','".date("H:i:s")."' ";
     $StrSQL .= ")";
     $query = mysqli_query($conn,$StrSQL);
     
