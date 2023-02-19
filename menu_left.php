@@ -15,7 +15,7 @@
                 <img src="<?php echo PATH; ?>/img/default.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?php echo $_SESSION['firstname'].' '.$_SESSION['lastname'];?> </a>
+                <a href="#" class="d-block">Chayapat Niropas </a>
             </div>
         </div>
 

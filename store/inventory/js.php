@@ -16,8 +16,8 @@ $(function() {
                     type = 'Finish Goods'
                 else if (result.type[count] == 'MAT')
                     type = 'Material'
-                else
-                type = ''
+                else if (result.type[count] == 'SFG')
+                    type = 'Semi Finish Goods'
 
                 $('#tableStock').append(
                     '<tr data-toggle="modal" data-target="#modal_edit" id="' + result
