@@ -1,6 +1,10 @@
 <?php
-session_start();
-include_once('conn.php');
+    session_start();
+    if (!isset($_SESSION['loggedin'])) {
+        header('Location: ../');
+        exit;
+    }    
+    include_once('conn.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +12,13 @@ include_once('conn.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>เคสลูกค้า (Customer)</title>
+    <title>Dashboard</title>
 
     <?php 
-    include_once('import_css.php');
-    include_once('css.php'); 
-    include_once ROOT .'/func.php';
+     include_once('../config.php');
+     include_once ROOT_CSS .'/import_css.php';
+     include_once('css.php'); 
+     include_once ROOT_CSS .'/func.php';
     ?>
 </head>
 
@@ -21,13 +26,13 @@ include_once('conn.php');
     <div class="wrapper">
 
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?php echo PATH; ?>/AdminLTE-3.2.0/dist/img/AdminLTELogo.png"
-                alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="<?php echo PATH; ?>/backend/img/logo_fb.png" alt="AdminLTELogo"
+                height="60" width="60">
         </div>
 
-        <?php include_once ROOT . '/menu_head.php'; ?>
+        <?php include_once ROOT_CSS . '/menu_head.php'; ?>
 
-        <?php include_once ROOT . '/menu_left.php'; ?>
+        <?php include_once ROOT_CSS . '/menu_left.php'; ?>
 
 
 
@@ -105,7 +110,7 @@ include_once('conn.php');
                             </div>
                         </div>
                     </div> -->
-                    
+
                 </div>
             </section>
         </div>
@@ -115,7 +120,7 @@ include_once('conn.php');
     </div>
 
     <?php
-    include_once ROOT . '/import_js.php';
+    include_once ROOT_CSS . '/import_js.php';
     
 
     include_once('js.php'); 

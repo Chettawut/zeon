@@ -7,7 +7,7 @@
                 <i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-sm-inline-block">
-            <a href="<?php echo PATH; ?>/store/rr" class="nav-link">Dashboard</a>
+            <a href="<?php echo PATH; ?>/backend" class="nav-link">Dashboard</a>
         </li>
     </ul>
 
