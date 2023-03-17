@@ -3,7 +3,7 @@
 	include('../../../conn.php');
 
 	$sql = "SELECT b.socode,b.sono,c.stcode,c.stname1,b.amount,b.unit,b.price,b.discount,b.supstatus,b.places ";
-	$sql .= "FROM sodetail as b inner join stock as c on (c.stcode=b.stcode) ";
+	$sql .= "FROM sfdetail as b inner join stock as c on (c.stcode=b.stcode) ";
 	$sql .= "where b.socode = '".$_POST['idcode']."' and b.giveaway = '0' order by b.sono ";
 	
 	$query = mysqli_query($conn,$sql);

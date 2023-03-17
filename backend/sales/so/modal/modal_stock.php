@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-gradient-secondary">
-                <h5 class="modal-title">เพิ่มสินค้าที่ต้องการขาย</h5>
+                <h5 class="modal-title">Select Finished Goods</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,14 +15,9 @@
                             <table id="table_stock" name="table_stock" class="table table-bordered table-striped">
                                 <thead style=" background-color:#D6EAF8;">
                                     <tr>
-                                        <th width="10%">รหัสพัสดุ</th>
-                                        <th width="40%">ชื่อพัสดุ</th>
-                                        <th width="8%" style="text-align:center">ลัง A</th>
-                                        <th width="8%" style="text-align:center">เศษ A</th>
-                                        <th width="8%" style="text-align:center">ลัง B</th>
-                                        <th width="8%" style="text-align:center">เศษ B</th>
-                                        <th width="8%" style="text-align:center">ลัง C</th>
-                                        <th width="8%" style="text-align:center">เศษ C</th>
+                                        <th width="30%" style="text-align:center">FG Code</th>
+                                        <th width="50%" style="text-align:center">FG Name</th>
+                                        <th width="20%" style="text-align:center">หน่วย</th>                                        
 
                                     </tr>
                                 </thead>

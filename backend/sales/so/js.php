@@ -8,6 +8,28 @@ $(function() {
 
 });
 
+// ย้ายไปหน้า เพิ่ม SF
+$("#btnAddSO").click(function() {
+
+    enabledSupSO()
+    $("#socode").prop('disabled', true);
+    $("#sfdate").val(new Date().toISOString().substring(0, 7));
+
+    previewSOcode();
+
+
+    $("#txtHead").text('เพิ่มใบสั่งขาย (Add Sales Order)');
+    $("#frmSO").show();
+    $("#divfrmSO").show();
+    $("#divfrmEditSO").hide();
+    // $('#divtableSO').hide();
+
+    $("#btnAddSubmit").show();
+    // $("#btnRefresh").hide();
+    $("#btnPrint").hide();
+
+});
+
 function onClick_tr(id, supname, address, tel) {
     $('#cuscode').val(id);
     $('#tdname').val(supname);
@@ -67,14 +89,7 @@ function onCreate_detail(stcode, stname1, unit, sellprice) {
         all_row +
         ',tableSODetail,' +
         stcode +
-        '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><input type="text" class="form-control" name="price1" id="price1' +
-        all_row + '" value="' +
-        sellprice +
-        '"></td><td><div class="input-group"><input type="text" class="form-control" name="discount1" id="discount1' +
-        all_row +
-        '" value="0"><div class="input-group-append"><span class="input-group-text">%</span></div></div></td><td ><p name="total1" id="total1' +
-        all_row +
-        '" class="form-control-static" style="text-align:right">0</p></td><td><button type="button" onClick="onDelete_MainTable(' +
+        '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
         all_row +
         ')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
     );
@@ -596,18 +611,8 @@ $.ajax({
                 .code[count] + '"><td>' + result.stcode[count] +
                 '</td><td>' +
                 result.stname1[count] +
-                '</td><td style="text-align:right">' +
-                result.amount1[count] +
-                '</td><td style="text-align:right">' +
-                result.piece1[count] +
-                '</td><td style="text-align:right">' +
-                result.amount2[count] +
-                '</td><td style="text-align:right">' +
-                result.piece2[count] +
-                '</td><td style="text-align:right">' +
-                result.amount3[count] +
-                '</td><td style="text-align:right">' +
-                result.piece3[count] +
+                '</td><td>' +
+                result.unit[count] +
                 '</td></tr>');
 
 
@@ -626,51 +631,6 @@ $.ajax({
     }
 });
 
-//modal เพิ่มของแถม
-// $.ajax({
-//     type: "POST",
-//     url: "ajax/get_stock.php",
-
-//     success: function(result) {
-
-//         for (count = 0; count < result.code.length; count++) {
-
-//             $('#table_giveaway tbody').append(
-//                 '<tr data-toggle="modal" data-dismiss="modal" data-target="#modelStockEdit" id="' +
-//                 result.stcode[count] + '" data-whatever="' + result
-//                 .code[count] + '"><td>' + result.stcode[count] +
-//                 '</td><td>' +
-//                 result.stname1[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.amount1[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.piece1[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.amount2[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.piece2[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.amount3[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.piece3[count] +
-//                 '</td></tr>');
-
-
-//         }
-
-//         $('#table_giveaway').DataTable({
-//             "dom": '<"pull-left"f>rt<"bottom"p><"clear">',
-//             "ordering": true
-//         });
-
-
-//         $(".dataTables_filter input[type='search']").attr({
-//             size: 40,
-//             maxlength: 40
-//         });
-//     }
-// });
-
 //modal เพิ่มของขาย
 $.ajax({
     type: "POST",
@@ -686,20 +646,9 @@ $.ajax({
                 .code[count] + '"><td>' + result.stcode[count] +
                 '</td><td>' +
                 result.stname1[count] +
-                '</td><td style="text-align:right">' +
-                result.amount1[count] +
-                '</td><td style="text-align:right">' +
-                result.piece1[count] +
-                '</td><td style="text-align:right">' +
-                result.amount2[count] +
-                '</td><td style="text-align:right">' +
-                result.piece2[count] +
-                '</td><td style="text-align:right">' +
-                result.amount3[count] +
-                '</td><td style="text-align:right">' +
-                result.piece3[count] +
+                '</td><td>' +
+                result.unit[count] +
                 '</td></tr>');
-
 
         }
 
@@ -715,51 +664,6 @@ $.ajax({
         });
     }
 });
-
-//modal เพิ่มของแถม
-// $.ajax({
-//     type: "POST",
-//     url: "ajax/get_stock.php",
-
-//     success: function(result) {
-
-//         for (count = 0; count < result.code.length; count++) {
-
-//             $('#table_giveaway2 tbody').append(
-//                 '<tr data-toggle="modal" data-dismiss="modal" data-target="#modelStockEdit" id="' +
-//                 result.stcode[count] + '" data-whatever="' + result
-//                 .code[count] + '"><td>' + result.stcode[count] +
-//                 '</td><td>' +
-//                 result.stname1[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.amount1[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.piece1[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.amount2[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.piece2[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.amount3[count] +
-//                 '</td><td style="text-align:right">' +
-//                 result.piece3[count] +
-//                 '</td></tr>');
-
-
-//         }
-
-//         $('#table_giveaway2').DataTable({
-//             "dom": '<"pull-left"f>rt<"bottom"p><"clear">',
-//             "ordering": true
-//         });
-
-
-//         $(".dataTables_filter input[type='search']").attr({
-//             size: 40,
-//             maxlength: 40
-//         });
-//     }
-// });
 
 $.ajax({
     type: "POST",
@@ -875,68 +779,52 @@ $("#frmAddSO").submit(function(event) {
     $('#tableSODetail tbody tr').each(function(key) {
         unit.push($(this).find("td #unit1" + (++key)).val());
     });
-    $('#tableSODetail tbody tr').each(function(key) {
-        price.push($(this).find("td #price1" + (++key)).val());
-    });
-    $('#tableSODetail tbody tr').each(function(key) {
-        discount.push($(this).find("td #discount1" + (++key)).val());
-    });
-
-    // $('#tableSOGiveaway tbody tr').each(function(key) {
-    //     stcode2.push($(this).find("td #stcode2" + (++key)).text());
+    // $('#tableSODetail tbody tr').each(function(key) {
+    //     price.push($(this).find("td #price1" + (++key)).val());
     // });
-    // $('#tableSOGiveaway tbody tr').each(function(key) {
-    //     amount2.push($(this).find("td #amount2" + (++key)).val());
+    // $('#tableSODetail tbody tr').each(function(key) {
+    //     discount.push($(this).find("td #discount1" + (++key)).val());
     // });
-    // $('#tableSOGiveaway tbody tr').each(function(key) {
-    //     unit2.push($(this).find("td #unit2" + (++key)).val());
-    // });
+    // alert($("#frmAddSO").serialize())
 
-    if ($("#cuscode").val() != '') {
-        if (stcode != 0) {
+    if (stcode != 0) {
 
-            $(':disabled').each(function(event) {
-                $(this).removeAttr('disabled');
-            });
+        $(':disabled').each(function(event) {
+            $(this).removeAttr('disabled');
+        });
 
-            $.ajax({
-                type: "POST",
-                url: "ajax/add_so.php",
-                data: $("#frmAddSO").serialize() + "&amount=" + amount + "&stcode=" +
-                    stcode +
-                    "&unit=" + unit +
-                    "&price=" + price +
-                    "&discount=" + discount +
-                    "&salecode=" + '001',
+        $.ajax({
+            type: "POST",
+            url: "ajax/add_so.php",
+            data: $("#frmAddSO").serialize() + "&amount=" + amount + "&stcode=" +
+                stcode + "&unit=" + unit,
 
 
-                success: async function(result) {
+            success: async function(result) {
 
-                    if (result.status == 1) // Success
-                    {
-                        await Swal.fire('สำเร็จ', result.message, 'success');
-                        window.location.reload();
-                        // console.log(result.message);
-                    } else {
-                        alert(result.message);
-                        $("#socode").prop("disabled", true);
-                        $("#cuscode").prop("disabled", true);
-                        $("#cusname").prop("disabled", true);
-                        $("#tdname").prop("disabled", true);
-                        $("#tel").prop("disabled", true);
-                        $("#address").prop("disabled", true);
+                if (result.status == 1) // Success
+                {
+                    await Swal.fire('สำเร็จ', result.message, 'success');
+                    window.location.reload();
+                    // console.log(result.message);
+                } else {
+                    alert(result.message);
+                    $("#socode").prop("disabled", true);
+                    $("#cuscode").prop("disabled", true);
+                    $("#cusname").prop("disabled", true);
+                    $("#tdname").prop("disabled", true);
+                    $("#tel").prop("disabled", true);
+                    $("#address").prop("disabled", true);
 
-                        // console.log(result.message);
-                    }
+                    // console.log(result.message);
                 }
-            });
+            }
+        });
 
-        } else {
-            alert('กรุณาเพิ่มรายการ');
-        }
     } else {
-        alert('กรุณาเลือกลูกค้า');
+        Swal.fire('เกิดข้อผิดพลาด', 'กรุณาเพิ่มรายการ', 'error')
     }
+
 });
 
 // กดยืนยันแก้ไข SO
@@ -1074,49 +962,6 @@ $("#table_stock").delegate('tbody tr', 'click', function() {
 
 });
 
-
-// เพิ่ม po detail เมื่อเลือกสต๊อก
-// $("#table_giveaway").delegate('tbody tr', 'click', function() {
-//     var target = $(this).attr("id");
-//     var id = target.split(',')[0];
-//     var row = target.split(',')[1];
-//     $('#tableSOGiveaway').show();
-//     // alert(row+' test '+id);
-//     var option = '';
-//     $.ajax({
-//         type: "POST",
-//         url: "ajax/get_places.php",
-
-//         success: function(result) {
-
-//             for (count = 0; count < result.places.length; count++) {
-
-//                 option += '<option value="' + result.placescode[count] + '">' + result
-//                     .places[count] + '</option>';
-
-
-//             }
-
-//             $.ajax({
-//                 type: "POST",
-//                 url: "ajax/getsup_stock.php",
-//                 data: "idcode=" + id,
-//                 success: function(result) {
-
-//                     onCreate_giveaway(result.stcode, result.stname1, result
-//                         .unit)
-
-//                 }
-//             });
-
-//         }
-//     });
-
-
-
-
-// });
-
 // เพิ่ม so detail เมื่อเลือกสต๊อกเพิ่มเติม
 $("#table_stock2").delegate('tbody tr', 'click', function() {
     var id = $(this).attr("id");
@@ -1154,48 +999,6 @@ $("#table_stock2").delegate('tbody tr', 'click', function() {
 
 
 });
-
-
-// เพิ่ม so detail เมื่อเลือกสต๊อกของแถมเพิ่มเติม
-// $("#table_giveaway2").delegate('tbody tr', 'click', function() {
-//     var id = $(this).attr("id");
-
-//     if (confirm("คุณต้องการเพิ่มของแถมรหัส " + id + " หรือไม่")) {
-
-//         // $('#tableEditSOGiveaway').show();
-
-//         $.ajax({
-//             type: "POST",
-//             url: "ajax/add_sodetail_giveaway.php",
-//             data: "stcode=" + id + "&socode=" + $("#editsocode").val(),
-//             success: function(result) {
-//                 // alert(result.message);
-
-//                 if (result.status == 1) {
-//                     alert(result.message);
-//                     onSelectSO($("#editsocode").val());
-//                     // console.log(result.sql);
-//                 } else {
-//                     alert(result.message);
-//                     $("#editsocode").prop("disabled", true);
-//                     $("#editcuscode").prop("disabled", true);
-//                     $("#editcusname").prop("disabled", true);
-//                     $("#edittdname").prop("disabled", true);
-//                     $("#edittel").prop("disabled", true);
-//                     $("#editaddress").prop("disabled", true);
-//                     // console.log(result.message);
-//                 }
-
-
-//             }
-//         });
-
-//     }
-
-
-
-
-// });
 
 
 
@@ -1281,34 +1084,5 @@ $("#btnCancle").click(function() {
 //Refresh
 $("#btnRefresh").click(function() {
     RefreshPage();
-});
-
-
-// ย้ายไปหน้า เพิ่ม SO
-$("#btnAddSO").click(function() {
-    enabledSupSO()
-    $("#socode").prop('disabled', true);
-    $("#cuscode").prop('disabled', true);
-    $("#tel").prop('disabled', true);
-    $("#tdname").prop('disabled', true);
-    $("#address").prop('disabled', true);
-    $("#sodate").val(new Date().toISOString().substring(0, 10));
-    $("#deldate").val(new Date().toISOString().substring(0, 10));
-    $("#paydate").val(new Date().toISOString().substring(0, 10));
-    $("#paydate2").val(new Date().toISOString().substring(0, 10));
-
-    previewSOcode();
-
-
-    $("#txtHead").text('เพิ่มใบสั่งขาย (Add Sales Order)');
-    $("#frmSO").show();
-    $("#divfrmSO").show();
-    $("#divfrmEditSO").hide();
-    // $('#divtableSO').hide();
-
-    $("#btnAddSubmit").show();
-    // $("#btnRefresh").hide();
-    $("#btnPrint").hide();
-
 });
 </script>

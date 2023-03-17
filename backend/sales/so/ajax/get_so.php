@@ -2,7 +2,7 @@
 	header('Content-Type: application/json');
 	include('../../../conn.php');
 
-	$sql = "SELECT a.socode,a.sodate,c.stcode,c.stname1,a.cuscode,d.cusname,b.supstatus FROM `somaster` as a inner join sodetail as b on (a.socode=b.socode) inner join stock as c on (c.stcode=b.stcode) inner join customer as d on (a.cuscode=d.cuscode) ";
+	$sql = "SELECT a.socode,a.sodate,c.stcode,c.stname1,a.cuscode,d.cusname,b.supstatus FROM `sfmaster` as a inner join sfdetail as b on (a.socode=b.socode) inner join stock as c on (c.stcode=b.stcode) left outer join customer as d on (a.cuscode=d.cuscode) ";
 	// $sql .= " where b.supstatus = '01'";
 	$sql .= " where b.giveaway = 0 ";
 	$sql .= " ORDER BY sodate desc,socode desc";

@@ -3,7 +3,7 @@
 	include('../../../conn.php');
 
 	$sql = "SELECT a.socode,a.sodate,a.deldate,a.paydate,a.paydate2,a.payment,a.currency,a.vat,a.remark,a.salecode,c.stcode,c.stname1,a.cuscode,d.cusname,d.idno,d.road,d.subdistrict,d.district,d.province,d.zipcode,d.tel,b.supstatus ";
-	$sql .= "FROM `somaster` as a inner join sodetail as b on (a.socode=b.socode) inner join stock as c on (c.stcode=b.stcode) inner join customer as d on (a.cuscode=d.cuscode) ";
+	$sql .= "FROM `sfmaster` as a inner join sfdetail as b on (a.socode=b.socode) inner join stock as c on (c.stcode=b.stcode) inner join customer as d on (a.cuscode=d.cuscode) ";
 	$sql .= "where a.socode = '".$_POST['idcode']."'  LIMIT 1";
 	
 	$query = mysqli_query($conn,$sql);
