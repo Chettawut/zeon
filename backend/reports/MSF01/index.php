@@ -42,12 +42,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0"><i class="nav-icon fa fa-cube"></i> Inventory</h1>
+                            <h1 class="m-0"><i class="nav-icon fas  fa-file-alt"></i>  Monthly Sales Forecast</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Store</a></li>
-                                <li class="breadcrumb-item active">Inventory</li>
+                                <li class="breadcrumb-item"><a href="#">Reports</a></li>
+                                <li class="breadcrumb-item active">Monthly Sales Forecast</li>
                             </ol>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <form data-ajax="false" target="_blank" method="post">
                                 <div data-role="fieldcontain">
 
-                                    <div class="btn-group" id="btnAddSO" role="group" aria-label="Basic example">
+                                    <!-- <div class="btn-group" id="btnAddSO" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-success" data-toggle="modal"
                                             data-target="#modal_add"><i class="fa fa fa-tags" aria-hidden="true"></i>
                                             เพิ่มรหัสวัสดุ</button>
@@ -73,7 +73,7 @@
                                         <button type="button" class="btn btn-success"><i class="fa fa fa-tags"
                                                 aria-hidden="true"></i>
                                             ย้อนกลับ</button>
-                                    </div>
+                                    </div> -->
 
 
                                 </div>
@@ -86,10 +86,10 @@
                                 <table name="tableStock" id="tableStock" class="table table-bordered table-striped">
                                     <thead style=" background-color:#D6EAF8;">
                                         <tr>
-                                            <th width="10%">รหัสวัสดุ</th>
-                                            <th width="40%">ชื่อวัสดุ</th>
-                                            <th width="20%">ประเภทวัสดุ</th>
-                                            <th width="12%" style="text-align:right">จำนวนสต๊อก</th>
+                                            <th width="10%">เดือน</th>
+                                            <th width="40%">ชื่อวัตถุดิบ</th>
+                                            <th width="20%">ราคา</th>
+                                            <th width="12%" style="text-align:right">ที่มา</th>
                                             <th width="14%" style="text-align:center">หน่วย</th>
 
                                         </tr>
