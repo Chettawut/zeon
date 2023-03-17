@@ -16,7 +16,7 @@
 
     <?php 
      include_once('../config.php');
-     include_once ROOT_CSS .'/import_css.php';
+     include_once ('import_css.php');
      include_once('css.php'); 
      include_once ROOT_CSS .'/func.php';
     ?>

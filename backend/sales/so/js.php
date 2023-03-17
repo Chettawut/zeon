@@ -1,9 +1,8 @@
 <script type="text/javascript">
-
 $(function() {
 
-$("#sideSales").show()
-getSO();
+    $("#sideSales").show()
+    getSO();
 
 
 
@@ -85,60 +84,6 @@ function onCreate_detail(stcode, stname1, unit, sellprice) {
 
 }
 
-// function onDelete_GiveawayTable(row) {
-//     var tmpstcode = [];
-//     var tmpstname1 = [];
-//     var tmpunit = [];
-//     var tmpsellprice = [];
-//     var all_row = $('#tableSOGiveaway tbody tr').length;
-
-//     for (var i = row + 1; i <= all_row; i++) {
-//         tmpstcode.push($('#stcode2' + i).text());
-//         tmpstname1.push($('#stname2' + i).text());
-//         tmpunit.push($('#unit2' + i).val());
-//     }
-
-//     for (var d = row; d <= all_row; d++)
-//         $("#giveaway" + d).remove();
-
-//     for (var j = 0; j < tmpstcode.length; j++)
-//         onCreate_giveaway(tmpstcode[j], tmpstname1[j], tmpunit[j]);
-
-//     if ($('#tableSOGiveaway tbody tr').length == 0)
-//         $('#tableSOGiveaway').hide();
-// }
-
-// function onCreate_giveaway(stcode, stname1, unit) {
-
-//     var all_row = $('#tableSOGiveaway tr').length;
-
-//     $('#tableSOGiveaway').append(
-//         '<tr id="giveaway' + all_row +
-//         '" ><td ><p class="form-control-static" style="text-align:center">' +
-//         all_row +
-//         '</p></td><td><p class="form-control-static" name="stcode2" id="stcode2' +
-//         all_row +
-//         '" style="text-align:center">' +
-//         stcode +
-//         '</p></td><td><p class="form-control-static" name="stname2" id="stname2' +
-//         all_row +
-//         '" style="text-align:left">' +
-//         stname1 +
-//         '</p></td><td><input type="number" style="text-align:right" class="form-control" name="amount2"  id="amount2' +
-//         all_row +
-//         '" min="1" value="1"></td><td><div class="input-group"><input type="text" class="form-control" style="text-align:center" name="unit2" id="unit2' +
-//         all_row + '" value="' +
-//         unit +
-//         '" disabled><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit2" data-whatever="' +
-//         all_row +
-//         ',tableSOGiveaway" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_GiveawayTable(' +
-//         all_row +
-//         ')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
-//     );
-
-
-
-// }
 
 function onCal_detail(row) {
     $('#total1' + row).html(formatMoney(($(
@@ -963,11 +908,15 @@ $("#frmAddSO").submit(function(event) {
                     "&price=" + price +
                     "&discount=" + discount +
                     "&salecode=" + '001',
-                success: function(result) {
-                    if (result.status == 1) {
-                        alert(result.message);
+
+
+                success: async function(result) {
+
+                    if (result.status == 1) // Success
+                    {
+                        await Swal.fire('สำเร็จ', result.message, 'success');
                         window.location.reload();
-                        // console.log(result.sql);
+                        // console.log(result.message);
                     } else {
                         alert(result.message);
                         $("#socode").prop("disabled", true);
@@ -1052,12 +1001,14 @@ $("#frmEditSO").submit(function(event) {
             "&unit=" + unit +
             "&price=" + price +
             "&places=" + places +
-            "&discount=" + discount ,
-        success: function(result) {
-            if (result.status == 1) {
-                alert(result.message);
+            "&discount=" + discount,
+        success: async function(result) {
+
+            if (result.status == 1) // Success
+            {
+                await Swal.fire('สำเร็จ', result.message, 'success');
                 window.location.reload();
-                console.log(result.sql);
+                // console.log(result.message);
             } else {
                 alert(result.message);
                 $("#editsocode").prop("disabled", true);

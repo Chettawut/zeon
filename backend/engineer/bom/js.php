@@ -122,16 +122,16 @@ function getbom_detail(stcodemain) {
 
 
                 $('#tableBomDetail').append(
-                    '<tr id="' + result.code[count] + '"><td>' + result.stcode[count] + '<input type="hidden" name="code" id="code' +
-                    [count+1] +
+                    '<tr id="' + result.code[count] + '"><td>' + result.stcode[count] +
+                    '<input type="hidden" name="code" id="code' + [count + 1] +
                     '"" class="form-control" value="' +
                     result.code[count] + '" ></td><td>' +
                     result.stname1[count] +
-                    '</td><td><input type="number" name="amount" id="amount' +
-                    [count+1] +
+                    '</td><td><input type="number" name="amount" id="amount' + [count + 1] +
                     '"" step="0.001" class="form-control" value="' +
-                    result.amount[count] + '" ></td><td><input type="text" name="unit" id="unit' +
-                    [count+1] +
+                    result.amount[count] + '" ></td><td><input type="text" name="unit" id="unit' + [
+                        count + 1
+                    ] +
                     '"" class="form-control" value="' +
                     result.unit[count] +
                     '" ></td><td><button type="button" onClick="onDelete_MainTable(\'' +
@@ -162,7 +162,7 @@ $("#frmEditBom").submit(function(e) {
     $(':disabled').each(function(e) {
         $(this).removeAttr('disabled');
     })
-    
+
     let code = [];
     let amount = [];
     let unit = [];
@@ -182,12 +182,12 @@ $("#frmEditBom").submit(function(e) {
     $.ajax({
         type: "POST",
         url: "ajax/edit_bom.php",
-        data: $("#frmEditBom").serialize()+ "&code=" + code + "&amount=" + amount + "&unit=" + unit,
-        success: function(result) {
+        data: $("#frmEditBom").serialize() + "&code=" + code + "&amount=" + amount + "&unit=" + unit,
+        success: async function(result) {
 
             if (result.status == 1) // Success
             {
-                alert(result.message);
+                await Swal.fire('สำเร็จ', result.message, 'success');
                 window.location.reload();
                 // console.log(result.message);
             }

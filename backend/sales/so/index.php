@@ -1,5 +1,10 @@
 <?php
-include_once('../../conn.php');
+    session_start();
+    if (!isset($_SESSION['loggedin'])) {
+        header('Location: ../../../');
+        exit;
+    }    
+    include_once('../../conn.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,23 +16,23 @@ include_once('../../conn.php');
 
     <?php 
     include_once('css.php'); 
-    include_once('../../config.php');
-    include_once ROOT .'/func.php';
-    include_once ROOT .'/import_css.php';
+    include_once('../../../config.php');
+    include_once('../../import_css.php');
+    include_once ROOT_CSS .'/func.php';
     ?>
 </head>
 
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-tranSales forecastsition sidebar-mini sidebar-collapse">
     <div class="wrapper">
 
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?php echo PATH; ?>/AdminLTE-3.2.0/dist/img/AdminLTELogo.png"
-                alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="<?php echo PATH; ?>/backend/img/logo_fb.png" alt="AdminLTELogo"
+                height="60" width="60">
         </div>
 
-        <?php include_once ROOT . '/menu_head.php'; ?>
+        <?php include_once ROOT_CSS . '/menu_head.php'; ?>
 
-        <?php include_once ROOT . '/menu_left.php'; ?>
+        <?php include_once ROOT_CSS . '/menu_left.php'; ?>
 
 
 
@@ -56,9 +61,9 @@ include_once('../../conn.php');
                             <form data-ajax="false" target="_blank" method="post">
                                 <div data-role="fieldcontain">
 
-                                        <button type="button" id="btnAddSO" data-toggle="modal" data-target="#modal_add"  class="btn btn-success"><i class="fa fa fa-tags"
-                                                aria-hidden="true"></i>
-                                            เพิ่มใบสั่งขาย</button>
+                                    <button type="button" id="btnAddSO" data-toggle="modal" data-target="#modal_add"
+                                        class="btn btn-success"><i class="fa fa fa-tags" aria-hidden="true"></i>
+                                        Add Sales Forecast</button>
                                     <button type="button" id="btnRefresh" class="btn btn-primary"><i
                                             class="fas fa-sync-alt" aria-hidden="true"></i> Refresh</button>
 
@@ -113,7 +118,7 @@ include_once('../../conn.php');
     </div>
 
     <?php
-    include_once ROOT . '/import_js.php';
+    include_once ROOT_CSS . '/import_js.php';
     
 
     include_once('js.php'); 

@@ -3,25 +3,16 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content w3-flat-turquoise">
             <div class="modal-header bg-gradient-secondary">
-                <h5 class="modal-title">แก้ไขใบสั่งขาย</h5>
+                <h5 class="modal-title">Edit Sales Forecast</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form name="frmEditSO" id="frmEditSO" method="POST" style="padding:10px;" action="javascript:void(0);">
                 <div class="modal-body">
-                    <button type="button" id="btnCancle" style="display:none;" class="btn btn-danger"><i
-                            class="fa fa-check-circle" aria-hidden="true"></i>
-                        ยกเลิกใบสั่งขาย</button>
-                    <button type="submit" formaction="invoice-print.php" id="btnPrint" style="display:none;"
-                        class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> Print ใบสั่งขาย </button>
-                    <button type="submit" formaction="../so_approve/invoice-print.php" id="btnInvoice"
-                        style="display:none;" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i>
-                        Print ใบกำกับภาษี
-                    </button>
                     <div class="form-row">
                         <div class="col-md-2">
-                            <label class="col-form-label">เลขที่ใบสั่งขาย</label>
+                            <label class="col-form-label">SF No.</label>
                             <input type="text" class="form-control" name="editsocode" id="editsocode" disabled>
                         </div>
                         <div class="col-md-4">
