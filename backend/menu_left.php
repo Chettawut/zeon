@@ -53,17 +53,17 @@
                     <li class="nav-header">Reports</li>
                     <li class="nav-item">
                         <a href="<?php echo PATH; ?>/backend/reports/MSF01" class="nav-link">
-                            <i class="nav-icon fas fa-light fa-cubes"></i>
+                            <i class="nav-icon fas  fa-file-alt"></i>
                             <p>
                                 Monthly Sales Forecast
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo PATH; ?>/backend/reports/RFM01" class="nav-link">
-                            <i class="nav-icon fas fa-light fa-cubes"></i>
+                        <a href="<?php echo PATH; ?>/backend/customer" class="nav-link">
+                            <i class="nav-icon fas fa-paste "></i>
                             <p>
-                                Reservation Of Material
+                                Reservation of material
                             </p>
                         </a>
                     </li>
