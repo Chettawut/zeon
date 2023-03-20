@@ -85,7 +85,110 @@
                         <div class="col-lg-12 col-12">
                             <div id="table">
                                 <table   class="table table-sm " >
-                                    
+                                    <thead>
+                                        <tr>
+                                            <td style="font-size: 30px; background-color:#FFE4B5;" rowspan="2">Month</td>
+                                            <td style="font-size: 15px; background-color:#CCFFCC;" colspan="15">Product</td>
+                                            <td style="font-size: 30px; background-color:#99FFFF;" rowspan="2">Total</td>
+                                        </tr>
+                                        <tr>
+                                            <th style=" border: 2px solid black;" scope="row">PT1</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT2</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT3</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT4</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT5</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT6</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT7</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT8</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT9</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT10</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT11</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT12</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT13</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT14</th>
+                                            <th style=" border: 2px solid black;" scope="row">PT15</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th style="background-color:#C5D6BA;" scope="row">JAN</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;" scope="row">FEB</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th  style="background-color:#fff9c4;"scope="row">MAR</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th  style="background-color:#fff9c4;"scope="row">APR</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">MAY</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">JUN</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">JUL</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">AUG</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">SEP</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">OCT</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">NOV</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color:#fff9c4;"scope="row">DEC</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr style="background-color:#99FFFF;">
+                                            <th scope="row">Total</th>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                            <td></td><td></td><td></td><td></td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
