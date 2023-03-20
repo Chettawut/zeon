@@ -1,39 +1,32 @@
 <script type="text/javascript">
 $(function() {
 
-    $("#sideStore").show()
-
+    // $("#sideStore").show()
+    $("#sfdate").val(new Date().toISOString().substring(0, 7));
+    // alert($("#sfdate").val())
     $.ajax({
         type: "POST",
-        url: "ajax/get_stock.php",
-        //    data: $("#frmMain").serialize(),
+        url: "ajax/get_sf.php",
+        data: "sfdate=" + $("#sfdate").val(),
         success: function(result) {
 
             for (count = 0; count < result.stcode.length; count++) {
 
-                let type
-                if (result.type[count] == 'FG')
-                    type = 'Finish Goods'
-                else if (result.type[count] == 'MAT')
-                    type = 'Material'
-                else if (result.type[count] == 'SFG')
-                    type = 'Semi Finish Goods'
 
                 $('#tableStock').append(
                     '<tr data-toggle="modal" data-target="#modal_edit" id="' + result
                     .stcode[
-                        count] + '" data-whatever="' + result.code[
+                        count] + '" data-whatever="' + result.socode[
                         count] + '">.<td>' + result.stcode[count] + '</td><td>' +
                     result.stname1[count] + '</td><td style="text-align:right">' +
-                    type + '</td><td style="text-align:right">' +
                     result.amount1[count] + '</td><td  style="text-align:center">' + result
                     .unit[count] + '</td></tr>');
             }
 
             var table = $('#tableStock').DataTable({
-                "paging": true,
+                "paging": false,
                 "lengthChange": false,
-                "searching": true,
+                "searching": false,
                 "ordering": true,
                 "info": false,
                 "autoWidth": false,

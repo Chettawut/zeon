@@ -63,7 +63,7 @@
                         <a href="<?php echo PATH; ?>/backend/reports/RFM01" class="nav-link">
                             <i class="nav-icon fas fa-paste "></i>
                             <p>
-                                Reservation of material
+                            Reservation Of Material
                             </p>
                         </a>
                     </li>

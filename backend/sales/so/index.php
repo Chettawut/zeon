@@ -81,7 +81,9 @@
                                         <th width="20%">SF No.</th>
                                         <th width="20%">SF Date</th>
                                         <th width="20%">FG Code</th>
-                                        <th width="40%">FG Name</th>
+                                        <th width="20%">FG Name</th>
+                                        <th width="20%">Amount</th>
+                                        <th width="20%">Unit</th>
                                     </tr>
                                 </thead>
                                 <tbody>

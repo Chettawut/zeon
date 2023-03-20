@@ -82,23 +82,21 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-12">
-                            <div id="mainStock">
-                                <table name="tableStock" id="tableStock" class="table table-bordered table-striped">
-                                    <thead style=" background-color:#D6EAF8;">
-                                        <tr>
-                                            <th width="10%">รหัสวัสดุ</th>
-                                            <th width="40%">ชื่อวัสดุ</th>
-                                            <th width="20%">ประเภทวัสดุ</th>
-                                            <th width="12%" style="text-align:right">จำนวนสต๊อก</th>
-                                            <th width="14%" style="text-align:center">หน่วย</th>
+                            <table name="tableStock" id="tableStock" class="table table-bordered table-striped">
+                                <thead style=" background-color:#D6EAF8;">
+                                    <tr>
+                                        <th width="10%">รหัสวัสดุ</th>
+                                        <th width="40%">ชื่อวัสดุ</th>
+                                        <th width="20%">ประเภทวัสดุ</th>
+                                        <th width="12%" style="text-align:right">จำนวนสต๊อก</th>
+                                        <th width="14%" style="text-align:center">หน่วย</th>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 

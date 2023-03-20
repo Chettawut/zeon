@@ -2,33 +2,31 @@
 	header('Content-Type: application/json');
 	include('../../../conn.php');
 
-	$sql = "SELECT b.amount as amount1,a.type,a.stcode,a.stname1,a.unit,a.status,a.code ";
-	$sql .= "FROM stock a inner join stock_level as b on (a.stcode=b.stcode) ";  
-	$sql .= " where b.places = 1 ";  
+	// $_POST['sfdate']='2023-03';
+
+	$sql = "SELECT a.socode ,b.amount as amount1,b.stcode,c.stname1,b.unit ";
+	$sql .= "FROM sfmaster a inner join sfdetail as b on (a.socode=b.socode) inner join stock as c on (b.stcode=c.stcode) ";  
+	$sql .= " where a.sfdate = '".$_POST['sfdate']."' ";  
 
 	$query = mysqli_query($conn,$sql);
 
 	// echo $sql;
 
 	$json_result=array(
-        "code" => array(),
+		"socode" => array(),
 		"stcode" => array(),
 		"stname1" => array(),
 		"amount1" => array(),
-		"type" => array(),
-		"unit" => array(),
-		"status" => array()
+		"unit" => array()
 		
 		);
 		
         while($row = $query->fetch_assoc()) {
-            array_push($json_result['code'],$row["code"]);
+			array_push($json_result['socode'],$row["socode"]);
 			array_push($json_result['stcode'],$row["stcode"]);
 			array_push($json_result['stname1'],$row["stname1"]);
 			array_push($json_result['amount1'],$row["amount1"]);
-			array_push($json_result['type'],$row["type"]);
 			array_push($json_result['unit'],$row["unit"]);
-			array_push($json_result['status'],$row["status"]);
         }
         echo json_encode($json_result);
 
