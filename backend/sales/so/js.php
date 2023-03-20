@@ -42,34 +42,13 @@ function onClick_tr(id, supname, address, tel) {
     $('#edittel').val(tel.substring(0, 3) + '-' + tel.substring(3));
 }
 
-function onDelete_MainTable(row) {
-    var tmpstcode = [];
-    var tmpstname1 = [];
-    var tmpunit = [];
-    var tmpsellprice = [];
-    var all_row = $('#tableSODetail tbody tr').length;
 
-    for (var i = row + 1; i <= all_row; i++) {
-        tmpstcode.push($('#stcode1' + i).text());
-        tmpstname1.push($('#stname1' + i).text());
-        tmpunit.push($('#unit1' + i).val());
-        tmpsellprice.push($('#price1' + i).val());
-    }
-
-    for (var d = row; d <= all_row; d++)
-        $("#detail" + d).remove();
-
-    for (var j = 0; j < tmpstcode.length; j++)
-        onCreate_detail(tmpstcode[j], tmpstname1[j], tmpunit[j], tmpsellprice[j]);
-
-}
-
-function onCreate_detail(stcode, stname1, unit, sellprice) {
+function onCreate_detail(stcode, stname1, unit) {
 
     var all_row = $('#tableSODetail tr').length;
 
     $('#tableSODetail').append(
-        '<tr id="detail' + all_row +
+        '<tr id="new' + all_row +
         '" ><td><p class="form-control-static" style="text-align:center">' +
         all_row +
         '</p></td><td><p class="form-control-static" name="stcode1"  id="stcode1' +
@@ -91,10 +70,8 @@ function onCreate_detail(stcode, stname1, unit, sellprice) {
         stcode +
         '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
         all_row +
-        ')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
+        ',\'add\')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
     );
-
-    onCal_detail(all_row);
 
 
 }
@@ -230,91 +207,10 @@ function previewSOcode() {
 
 }
 
-function onDeleteDetail(table, id) {
-    $("#" + table + " tbody").empty();
-    $("#" + id).hide();
-
-    if (table == "tableSOGiveaway")
-        $('#tableSOGiveaway').hide();
-}
-
-function getTotal(row) {
-    $('#total1' + row).html(formatMoney(($('#amount1' + row).val() *
-        $('#price1' +
-            row).val()) - ((($('#amount1' + row).val() *
-        $(
-            '#price1' + row).val()) * $(
-        '#discount1' +
-        row).val()) / 100), 2));
-
-}
-
-function disabledSupSO() {
-    $("input[type='text'], textarea").each(function(event) {
-        $(this).prop('disabled', true);
-    });
-    $("input[type='date']").each(function(event) {
-        $(this).prop('disabled', true);
-    });
-    $("select").each(function(event) {
-        $(this).prop('disabled', true);
-    });
-    $("select option").each(function(event) {
-        $(this).prop('disabled', true);
-    });
-
-    $("input:radio").each(function(event) {
-        $(this).prop('disabled', true);
-    });
-}
-
-function enabledSupSO() {
-    $("input[type='text'], textarea").each(function(event) {
-        $(this).prop('disabled', false);
-    });
-    $("input[type='date']").each(function(event) {
-        $(this).prop('disabled', false);
-    });
-    $("select").each(function(event) {
-        $(this).prop('disabled', false);
-    });
-    $("select option").each(function(event) {
-        $(this).prop('disabled', false);
-    });
-
-    $("input:radio").each(function(event) {
-        $(this).prop('disabled', false);
-    });
-}
-
 $('#modal_edit').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var recipient = button.data('whatever');
     var modal = $(this);
-
-    $.ajax({
-        type: "POST",
-        url: "ajax/getsup_customer.php",
-        data: "idcode=" + recipient,
-        success: function(result) {
-            modal.find('.modal-body #code').val(result.code);
-            modal.find('.modal-body #cuscode').val(result.cuscode);
-            modal.find('.modal-body #cusname').val(result.cusname);
-            modal.find('.modal-body #idno').val(result.idno);
-            modal.find('.modal-body #road').val(result.road);
-            modal.find('.modal-body #subdistrict').val(result.subdistrict);
-            modal.find('.modal-body #district').val(result.district);
-            modal.find('.modal-body #province').val(result.province);
-            modal.find('.modal-body #zipcode').val(result.zipcode);
-            modal.find('.modal-body #tel').val(result.tel);
-            modal.find('.modal-body #fax').val(result.fax);
-            modal.find('.modal-body #taxnumber').val(result.taxnumber);
-            modal.find('.modal-body #status').val(result.status);
-            modal.find('.modal-body #email').val(result.email);
-
-
-        }
-    });
 
     $("#editsocode").val(recipient);
     $("#tableEditSODetail").show();
@@ -328,7 +224,6 @@ $('#modal_edit').on('show.bs.modal', function(event) {
         $("#btnAddSOdetail2").show();
         // $("#btnAddSOGiveaway2").show();
     } else {
-        disabledSupSO();
         $("#btnEdit").hide();
         $("#btnAddSOdetail2").hide();
         // $("#btnAddSOGiveaway2").hide();
@@ -351,20 +246,9 @@ $('#modal_edit').on('show.bs.modal', function(event) {
         data: "idcode=" + recipient,
         success: function(result) {
 
-            $("#editsocode").val(result.socode);
-            $("#editcuscode").val(result.cuscode);
-            $("#editcusname").val(result.cusname);
-            $("#editaddress").val(result.address);
-            $("#edittel").val(result.tel);
-            $("#editsodate").val(result.sodate);
-            $("#editdeldate").val(result.deldate);
-            $("#editpaydate").val(result.paydate);
-            $("#editpaydate2").val(result.paydate2);
-            $("#editpayment").val(result.payment);
-            $("#editcurrency").val(result.currency);
+            $("#editsfcode").val(result.sfcode);
+            $("#editsfdate").val(result.sfdate);
             $("#editremark").val(result.remark);
-            $("#editsalecode").val(result.salecode);
-            $("input[name=editvat][value=" + result.vat + "]").prop('checked', true);
 
         }
     });
@@ -406,7 +290,7 @@ $('#modal_edit').on('show.bs.modal', function(event) {
                     for (count = 0; count < result.stcode.length; count++) {
 
                         $('#tableEditSODetail').append(
-                            '<tr id="' + result.stcode[count] +
+                            '<tr id="' + result.codedetail[count] +
                             '" ><td name="sono" id="sono" ><p class="form-control-static" style="text-align:center">' +
                             result.sono[count] +
                             '</p></td><td><p class="form-control-static" style="text-align:center">' +
@@ -428,76 +312,16 @@ $('#modal_edit').on('show.bs.modal', function(event) {
                             ',tableEditSODetail,' +
                             result
                             .stcode[count] +
-                            '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><input type="text" class="form-control" onChange="getTotal(' +
-                            result.sono[count] + ');" name="price1" id="price1' +
-                            result.sono[count] + '" value="' +
-                            result.price[count] +
-                            '"></td><td><div class="input-group"><input type="text" class="form-control" onChange="getTotal(' +
-                            result.sono[count] +
-                            ');" name="discount1" id="discount1' +
-                            result.sono[count] +
-                            '" value="' +
-                            result.discount[count] +
-                            '"><div class="input-group-append"><span class="input-group-text">%</span></div></div></td><td ><p name="total1" id="total1' +
-                            result.sono[count] +
-                            '" class="form-control-static" style="text-align:right">0</p></td><td><select class="form-control" style="text-align:left" name="places1" id="places1' +
-                            $('#tableEditSODetail tr').length + '" disabled>' +
-                            option +
-                            '</select></td></tr>'
+                            '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
+                            result.codedetail[count] +
+                            ',\'edit\')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
                         );
-                        getTotal(result.sono[count]);
-                        $('#places1' + $('#tableEditSODetail tbody tr').length).val(
-                            result
-                            .places[count]);
 
                     }
 
                 }
             });
 
-            // $.ajax({
-            //     type: "POST",
-            //     url: "ajax/getsup_sodetail_giveaway.php",
-            //     data: "idcode=" + recipient,
-            //     success: function(result) {
-            //         for (count = 0; count < result.stcode.length; count++) {
-            //             if (result.stcode.length > 0)
-            //                 $('#tableEditSOGiveaway').show();
-            //             $('#tableEditSOGiveaway').append(
-            //                 '<tr id="' + result.stcode[count] +
-            //                 '" ><td name="sono" id="sono" ><p class="form-control-static" style="text-align:center">' +
-            //                 $('#tableEditSOGiveaway tr').length +
-            //                 '</p></td><td><p class="form-control-static" name="stcode2" id="stcode2' +
-            //                 $('#tableEditSOGiveaway tr').length +
-            //                 '" style="text-align:center">' +
-            //                 result
-            //                 .stcode[count] +
-            //                 '</p></td><td><p class="form-control-static" style="text-align:left">' +
-            //                 result
-            //                 .stname1[count] +
-            //                 '</p></td><td><input type="number" style="text-align:right" class="form-control" name="amount2"  id="amount2' +
-            //                 $('#tableEditSOGiveaway tr').length +
-            //                 '" value="' +
-            //                 result.amount[count] +
-            //                 '"></td><td><div class="input-group"><input type="text" class="form-control" style="text-align:center" name="unit2" id="unit2' +
-            //                 $('#tableEditSOGiveaway tr').length + '" value="' +
-            //                 result.unit[count] +
-            //                 '" disabled><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit2" data-whatever="' +
-            //                 $('#tableEditSOGiveaway tr').length +
-            //                 ',tableEditSOGiveaway," type="button"><span class="fa fa-search"></span></button></span></div></td><td><select class="form-control" style="text-align:left" name="places2" id="places2' +
-            //                 $('#tableEditSOGiveaway tr').length + '" disabled>' +
-            //                 option +
-            //                 '</select></td></tr>'
-            //             );
-            //             $('#places2' + $('#tableEditSOGiveaway tbody tr').length).val(
-            //                 result
-            //                 .places[count]);
-            //             // getTotal(result.rrno[count]);
-
-            //         }
-
-            //     }
-            // });
         }
     });
 });
@@ -532,25 +356,23 @@ function getSO() {
                     supstatus = 'ยังส่งของไม่ครบ'
                     suptitle = 'ยังส่งของไม่ครบ'
                 }
-                sodate = result
-                    .sodate[count].substring(8) + '-' + result
-                    .sodate[count].substring(5, 7) + '-' + result
-                    .sodate[count].substring(0, 4);
-
+                // sodate = result
+                //     .sodate[count].substring(8) + '-' + result
+                //     .sodate[count].substring(5, 7) + '-' + result
+                //     .sodate[count].substring(0, 4);
+                    
                 $('#tableSO').append(
                     '<tr data-toggle="modal" data-target="#modal_edit" id="' + result
                     .socode[
                         count] + '" data-whatever="' + result.socode[
                         count] + '" ><td>' + result.socode[count] +
-                    '</td><td>' + sodate + '</td><td>' + result
-                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td>' + result
-                    .cusname[count] + '</td><td><span title="' + suptitle + '">' + supstatus +
-                    '</span></td></tr>');
+                    '</td><td>' +  result.sfdate[count] + '</td><td>' + result
+                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td></tr>');
             }
 
             var table = $('#tableSO').DataTable({
                 "dom": '<"pull-right"f>rt<"bottom"p><"clear">',
-                "order": [],
+                "order": [1, 'desc'],
                 "pageLength": 20
             })
 
@@ -798,8 +620,6 @@ $("#frmAddSO").submit(function(event) {
             url: "ajax/add_so.php",
             data: $("#frmAddSO").serialize() + "&amount=" + amount + "&stcode=" +
                 stcode + "&unit=" + unit,
-
-
             success: async function(result) {
 
                 if (result.status == 1) // Success
@@ -836,14 +656,6 @@ $("#frmEditSO").submit(function(event) {
     var amount = [];
     var stcode = [];
     var unit = [];
-    var price = [];
-    var discount = [];
-    var places = [];
-
-    var stcode2 = [];
-    var amount2 = [];
-    var unit2 = [];
-    var places2 = [];
 
     $(':disabled').each(function(event) {
         $(this).removeAttr('disabled');
@@ -858,38 +670,14 @@ $("#frmEditSO").submit(function(event) {
     $('#tableEditSODetail tbody tr').each(function(key) {
         unit.push($(this).find("td #unit1" + (++key)).val());
     });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        price.push($(this).find("td #price1" + (++key)).val());
-    });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        discount.push($(this).find("td #discount1" + (++key)).val());
-    });
 
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        places.push($(this).find("td #places1" + (++key)).val());
-    });
-
-    // $('#tableEditSOGiveaway tbody tr').each(function() {
-    //     stcode2.push($(this).attr("id"));
-    // });
-    // $('#tableEditSOGiveaway tbody tr').each(function(key) {
-    //     amount2.push($(this).find("td #amount2" + (++key)).val());
-    // });
-    // $('#tableEditSOGiveaway tbody tr').each(function(key) {
-    //     unit2.push($(this).find("td #unit2" + (++key)).val());
-    // });
-    // $('#tableEditSOGiveaway tbody tr').each(function(key) {
-    //     places2.push($(this).find("td #places2" + (++key)).val());
-    // });
-
+    // alert(stcode)
+    // alert($("#frmEditSO").serialize())
     $.ajax({
         type: "POST",
         url: "ajax/edit_so.php",
         data: $("#frmEditSO").serialize() + "&amount=" + amount + "&stcode=" + stcode +
-            "&unit=" + unit +
-            "&price=" + price +
-            "&places=" + places +
-            "&discount=" + discount,
+            "&unit=" + unit,
         success: async function(result) {
 
             if (result.status == 1) // Success
@@ -899,12 +687,7 @@ $("#frmEditSO").submit(function(event) {
                 // console.log(result.message);
             } else {
                 alert(result.message);
-                $("#editsocode").prop("disabled", true);
-                $("#editcuscode").prop("disabled", true);
-                $("#editcusname").prop("disabled", true);
-                $("#edittdname").prop("disabled", true);
-                $("#edittel").prop("disabled", true);
-                $("#editaddress").prop("disabled", true);
+                $("#editsfcode").prop("disabled", true);
                 // console.log(result.message);
             }
         }
@@ -952,7 +735,7 @@ $("#table_stock").delegate('tbody tr', 'click', function() {
                     // console.log(today);
 
                     onCreate_detail(result.stcode, result.stname1, result
-                        .unit, result.sellprice);
+                        .unit);
 
                 }
             });
@@ -971,13 +754,42 @@ $("#table_stock2").delegate('tbody tr', 'click', function() {
         $.ajax({
             type: "POST",
             url: "ajax/add_sodetail.php",
-            data: "stcode=" + id + "&socode=" + $("#editsocode").val(),
+            data: "stcode=" + id + "&socode=" + $("#editsfcode").val(),
             success: function(result) {
                 // alert(result.message);
 
                 if (result.status == 1) {
-                    alert(result.message);
-                    onSelectSO($("#editsocode").val());
+
+                    var all_row = $('#tableEditSODetail tr').length;
+
+                    $('#tableEditSODetail').append(
+                        '<tr id="new' + all_row +
+                        '" ><td><p class="form-control-static" style="text-align:center">' +
+                        all_row +
+                        '</p></td><td><p class="form-control-static" name="stcode1"  id="stcode1' +
+                        all_row +
+                        '" style="text-align:center">' +
+                        id +
+                        '</p></td><td><p class="form-control-static" name="stname1"  id="stname1' +
+                        all_row +
+                        '" style="text-align:left" >' +
+                        result.stname1 +
+                        '</p></td><td><input type="number" class="form-control" name="amount1"  id="amount1' +
+                        all_row +
+                        '" min="1" value="1"></td><td><div class="input-group"><input type="text" class="form-control" name="unit1" id="unit1' +
+                        all_row + '" value="' +
+                        result.unit +
+                        '" disabled><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit" data-whatever="' +
+                        all_row +
+                        ',tableSODetail,' +
+                        id +
+                        '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
+                        all_row +
+                        ',\'add\')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
+                    );
+
+
+                    onSelectSO($("#editsfcode").val());
                     // console.log(result.sql);
                 } else {
                     alert(result.message);
@@ -999,6 +811,34 @@ $("#table_stock2").delegate('tbody tr', 'click', function() {
 
 
 });
+
+function onDelete_MainTable(code, type) {
+
+    // alert(code)
+    if (confirm("ยืนยันการลบรายการ")) {
+
+        if (type === 'add')
+            $("#new" + code).remove();
+        else {
+            // alert(code)
+            $.ajax({
+                type: "POST",
+                url: "ajax/deletesup_sf.php",
+                data: "code=" + code,
+                success: function(result) {
+                    if (result.status == 1) // Success
+                    {
+                        $("#" + code).remove();
+                    } else // Err
+                    {
+                        alert(result.message);
+                    }
+                    // alert(result);
+                }
+            });
+        }
+    }
+}
 
 
 
@@ -1032,33 +872,6 @@ $("#btnCancle").click(function() {
     $('#tableEditSODetail tbody tr').each(function(key) {
         unit.push($(this).find("td #unit1" + (++key)).val());
     });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        price.push($(this).find("td #price1" + (++key)).val());
-    });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        discount.push($(this).find("td #discount1" + (++key)).val());
-    });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        places.push($(this).find("td #places1" + (++key)).val());
-    });
-
-    // $('#tableEditSOGiveaway tbody tr').each(function() {
-    //     stcode2.push($(this).attr("id"));
-    // });
-    // $('#tableEditSOGiveaway tbody tr').each(function(key) {
-    //     amount2.push($(this).find("td #amount2" + (++key)).val());
-    // });
-    // $('#tableEditSOGiveaway tbody tr').each(function(key) {
-    //     unit2.push($(this).find("td #unit2" + (++key)).val());
-    // });
-    // $('#tableEditSOGiveaway tbody tr').each(function(key) {
-    //     places2.push($(this).find("td #places2" + (++key)).val());
-    // });
-
-
-    // alert('ไม่สามารถยกเลิกได้ กรุณาติดต่อโปรแกรมเมอร์');
-    // window.location.reload();
-    // alert(amount2);
 
     if (confirm("คุณต้องการยกเลิกใบสั่งขาย " + so_code + " หรือไม่")) {
         $.ajax({

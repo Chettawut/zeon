@@ -8,13 +8,14 @@
     $unit = explode(',', $_POST['unit']);
 
     $socode;
-        
+    $year;    
         $sql = "SELECT * FROM options order by year desc LIMIT 1";
         $query = mysqli_query($conn,$sql);
 
             while($row = $query->fetch_assoc()) {
                 $code=sprintf("%03s", ($row["maxsocode"]+1));
                 $yearsocode=substr( $row["year"], -2);
+                $year=$row["year"];
                 $monthsocode=date("m");
                 $socode = 'SF'.$yearsocode.$monthsocode.$code;
             }
@@ -42,7 +43,7 @@
 
             $strSQL = "UPDATE options SET ";
             $strSQL .= "maxsocode='".$code."' ";
-            $strSQL .= "WHERE year= ".$socode." ";
+            $strSQL .= "WHERE year= '".$year."' ";
             $query = mysqli_query($conn,$strSQL);
         }
 

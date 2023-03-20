@@ -78,12 +78,10 @@
                                 <thead style="background-color:#D6EAF8;">
                                     <tr>
 
-                                        <th width="10%">SO No.</th>
-                                        <th width="10%">SO Date</th>
-                                        <th width="10%">FG Code</th>
-                                        <th width="25%">FG Name</th>
-                                        <th width="25%">Cusname</th>
-                                        <th width="10%">Status</th>
+                                        <th width="20%">SF No.</th>
+                                        <th width="20%">SF Date</th>
+                                        <th width="20%">FG Code</th>
+                                        <th width="40%">FG Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>
