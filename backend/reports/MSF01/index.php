@@ -87,7 +87,7 @@
                                 <table   class="table table-sm " >
                                     <thead>
                                         <tr>
-                                            <td style="font-size: 30px; background-color:#9BC2B2;" rowspan="2">Month</td>
+                                            <td style="font-size: 30px; background-color:#FFE4B5;" rowspan="2">Month</td>
                                             <td style="font-size: 15px; background-color:#CCFFCC;" colspan="15">Product</td>
                                             <td style="font-size: 30px; background-color:#99FFFF;" rowspan="2">Total</td>
                                         </tr>
