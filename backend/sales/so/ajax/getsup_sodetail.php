@@ -2,14 +2,15 @@
 	header('Content-Type: application/json');
 	include('../../../conn.php');
 
-	$sql = "SELECT b.socode,b.sono,c.stcode,c.stname1,b.amount,b.unit,b.price,b.discount,b.supstatus,b.places ";
-	$sql .= "FROM sodetail as b inner join stock as c on (c.stcode=b.stcode) ";
+	$sql = "SELECT b.codedetail,b.socode,b.sono,c.stcode,c.stname1,b.amount,b.unit,b.price,b.discount,b.supstatus,b.places ";
+	$sql .= "FROM sfdetail as b inner join stock as c on (c.stcode=b.stcode) ";
 	$sql .= "where b.socode = '".$_POST['idcode']."' and b.giveaway = '0' order by b.sono ";
 	
 	$query = mysqli_query($conn,$sql);
 
 	
 	$json_result=array(
+		"codedetail" => array(),
 		"socode" => array(),
 		"sono" => array(),
 		"stcode" => array(),
@@ -24,6 +25,7 @@
 		);
 		
         while($row = $query->fetch_assoc()) {
+			array_push($json_result['codedetail'],$row["codedetail"]);
 			array_push($json_result['socode'],$row["socode"]);
 			array_push($json_result['sono'],$row["sono"]);
 			array_push($json_result['stcode'],$row["stcode"]);
