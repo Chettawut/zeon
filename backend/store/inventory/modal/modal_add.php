@@ -38,15 +38,15 @@
                     <div class="row">
                         <div class="form-group col-lg-3 col-6">
                             <label for="recipient-name" class="col-form-label">Min ขั้นต่ำ</label>
-                            <input type="number" class="form-control" name="add_stmin1" id="add_stmin1" required>
+                            <input type="number" class="form-control" name="add_stmin1" id="add_stmin1" >
                         </div>
                         <div class="form-group col-lg-3 col-6">
                             <label for="recipient-name" class="col-form-label">Min ขีดแดง</label>
-                            <input type="number" class="form-control" name="add_stmin2" id="add_stmin2" required>
+                            <input type="number" class="form-control" name="add_stmin2" id="add_stmin2" >
                         </div>
                         <div class="form-group col-lg-3 col-6">
                             <label for="recipient-name" class="col-form-label">Max</label>
-                            <input type="number" class="form-control" name="add_stmax" id="add_stmax" required>
+                            <input type="number" class="form-control" name="add_stmax" id="add_stmax" >
                         </div>
                         <div class="form-group col-lg-3 col-6">
                             <label for="recipient-name" class="col-form-label">ProductType</label>

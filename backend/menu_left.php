@@ -52,7 +52,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="<?php echo PATH; ?>/backend/unit" class="nav-link">
-                            <i class="nav-icon fas fa-book-open"></i>
+                            <i class="nav-icon fas fas fa-box"></i>
                             <p>
                                 Unit
                             </p>
