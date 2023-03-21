@@ -84,14 +84,14 @@
                     <div class="row">
                         <div class="col-lg-12 col-12">
                             <div id="table">
-                                <table style="background-color:#FFFFF0;"  class="table table-sm " >
+                                <table style="background-color:#FFFFFF;"  class="table table-sm " >
                                     <thead>
                                         <tr>
-                                            <td style="font-size: 30px; background-color:#87CEFA;" rowspan="2">Month</td>
-                                            <th style=" border: 2px solid black; font-size: 15px; background-color:#32CD32;" colspan="15">Product</th>
-                                            <td style="font-size: 30px; background-color:#FFD700;" rowspan="2">Total</td>
+                                            <td style="font-size: 30px; background-color:#66FF66;" rowspan="2">Month</td>
+                                            <th style=" border: 2px solid black; font-size: 15px; background-color:#66FF66;" colspan="15">Product</th>
+                                            <td style="font-size: 30px; background-color:#66FF66;" rowspan="2">Total</td>
                                         </tr>
-                                        <tr style="background-color:#99FF99;">
+                                        <tr style="background-color:#aaffaa;">
                                             <th style=" border: 2px solid black;" scope="row">PT1</th>
                                             <th style=" border: 2px solid black;" scope="row">PT2</th>
                                             <th style=" border: 2px solid black;" scope="row">PT3</th>
@@ -111,95 +111,95 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;" scope="row">JAN</th>
+                                            <th style="background-color:#ffd4aa;" scope="row">JAN</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2	;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF	;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;" scope="row">FEB</th>
+                                            <th style="background-color:#ffd4aa;" scope="row">FEB</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th  style="background-color:#E0FFFF;"scope="row">MAR</th>
+                                            <th  style="background-color:#ffd4aa;"scope="row">MAR</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th  style="background-color:#E0FFFF;"scope="row">APR</th>
+                                            <th  style="background-color:#ffd4aa;"scope="row">APR</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">MAY</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">MAY</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">JUN</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">JUN</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">JUL</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">JUL</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">AUG</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">AUG</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">SEP</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">SEP</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">OCT</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">OCT</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">NOV</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">NOV</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#E0FFFF;"scope="row">DEC</th>
+                                            <th style="background-color:#ffd4aa;"scope="row">DEC</th>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
                                             <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#FAFAD2;"></td>
+                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
                                         </tr>
                                         <tr>
-                                            <th style="background-color:#f584e4;" scope="row">Total</th>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#FFCCFF;"></td>
-                                            <td style="background-color:#F5DEB3;"></td>
+                                            <th style="background-color:#ffff56;" scope="row">Total</th>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="background-color:#ffff56;"></td>
                                         </tr>
                                     </tbody>
                                 </table>
