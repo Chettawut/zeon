@@ -84,7 +84,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-12">
                             <div id="table">
-                                <table style="background-color:#dbffde;"  class="table table-sm " >
+                                <table style="background-color:#e0ffe7;"  class="table table-sm " >
                                     <thead>
                                         <tr>
                                             <td style="font-size: 30px; background-color:#fbfb6a;" rowspan="2">Month</td>
