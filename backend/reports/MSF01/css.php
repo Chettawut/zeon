@@ -6,7 +6,11 @@ table, th, td {
 border: 2px solid black;
 }
 
-thead th{
+thead td ,td{
+  border: 2px solid black;
+}
+
+tbody th, td{
   border: 2px solid black;
 }
 </style>
