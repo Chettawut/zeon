@@ -9,26 +9,26 @@ $(function() {
 });
 
 // ย้ายไปหน้า เพิ่ม SF
-$("#btnAddSO").click(function() {
+// $("#btnAddSO").click(function() {
 
-    enabledSupSO()
-    $("#socode").prop('disabled', true);
-    $("#sfdate").val(new Date().toISOString().substring(0, 7));
+//     enabledSupSO()
+//     $("#socode").prop('disabled', true);
+//     $("#sfdate").val(new Date().toISOString().substring(0, 7));
 
-    previewSOcode();
+//     previewSOcode();
 
 
-    $("#txtHead").text('เพิ่มใบสั่งขาย (Add Sales Order)');
-    $("#frmSO").show();
-    $("#divfrmSO").show();
-    $("#divfrmEditSO").hide();
-    // $('#divtableSO').hide();
+//     $("#txtHead").text('เพิ่มใบสั่งขาย (Add Sales Order)');
+//     $("#frmSO").show();
+//     $("#divfrmSO").show();
+//     $("#divfrmEditSO").hide();
+//     // $('#divtableSO').hide();
 
-    $("#btnAddSubmit").show();
-    // $("#btnRefresh").hide();
-    $("#btnPrint").hide();
+//     $("#btnAddSubmit").show();
+//     // $("#btnRefresh").hide();
+//     $("#btnPrint").hide();
 
-});
+// });
 
 function onClick_tr(id, supname, address, tel) {
     $('#cuscode').val(id);
@@ -207,6 +207,10 @@ function previewSOcode() {
 
 }
 
+$('#modal_add').on('show.bs.modal', function(event) {
+    previewSOcode()
+});
+
 $('#modal_edit').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var recipient = button.data('whatever');
@@ -360,14 +364,15 @@ function getSO() {
                 //     .sodate[count].substring(8) + '-' + result
                 //     .sodate[count].substring(5, 7) + '-' + result
                 //     .sodate[count].substring(0, 4);
-                    
+
                 $('#tableSO').append(
                     '<tr data-toggle="modal" data-target="#modal_edit" id="' + result
                     .socode[
                         count] + '" data-whatever="' + result.socode[
                         count] + '" ><td>' + result.socode[count] +
-                    '</td><td>' +  result.sfdate[count] + '</td><td>' + result
-                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td>' + result.amount[count] + '</td><td>' + result.unit[count] + '</td></tr>');
+                    '</td><td>' + result.sfdate[count] + '</td><td>' + result
+                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td>' + result.amount[
+                        count] + '</td><td>' + result.unit[count] + '</td></tr>');
             }
 
             var table = $('#tableSO').DataTable({
@@ -699,46 +704,31 @@ $("#frmEditSO").submit(function(event) {
 $("#table_stock").delegate('tbody tr', 'click', function() {
     var id = $(this).attr("id");
 
-    var option = '';
+
     $.ajax({
         type: "POST",
-        url: "ajax/get_places.php",
-
+        url: "ajax/getsup_stock.php",
+        data: "idcode=" + id,
         success: function(result) {
 
-            for (count = 0; count < result.places.length; count++) {
+            var today = new Date();
+            var dd = today.getDate() + 7;
 
-                option += '<option value="' + result.placescode[count] + '">' + result
-                    .places[count] + '</option>';
-
-
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
             }
-            $.ajax({
-                type: "POST",
-                url: "ajax/getsup_stock.php",
-                data: "idcode=" + id,
-                success: function(result) {
 
-                    var today = new Date();
-                    var dd = today.getDate() + 7;
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            today = yyyy + '-' + mm + '-' + dd;
+            // console.log(today);
 
-                    var mm = today.getMonth() + 1;
-                    var yyyy = today.getFullYear();
-                    if (dd < 10) {
-                        dd = '0' + dd;
-                    }
+            onCreate_detail(result.stcode, result.stname1, result
+                .unit);
 
-                    if (mm < 10) {
-                        mm = '0' + mm;
-                    }
-                    today = yyyy + '-' + mm + '-' + dd;
-                    // console.log(today);
-
-                    onCreate_detail(result.stcode, result.stname1, result
-                        .unit);
-
-                }
-            });
         }
     });
 
