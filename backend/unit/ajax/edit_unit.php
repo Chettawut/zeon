@@ -1,8 +1,7 @@
 <?php
 	header('Content-Type: application/json');
-	include('../../../conn.php');
-    
-    date_default_timezone_set("Asia/Bangkok");
+    include('../../conn.php');
+    date_default_timezone_set('Asia/Bangkok');
 
     $strSQL = "UPDATE unit SET ";
     $strSQL .= "unit='".$_POST["unit"]."',status='".$_POST["status"]."' ";
@@ -15,7 +14,7 @@
 
 
         if($query) {
-            echo json_encode(array('status' => '1','message'=> 'แก้ไขหน่วยวัสดุ '.$_POST["unit"].' สำเร็จ'));
+            echo json_encode(array('status' => '1','message'=> 'แก้ไขหน่วยใช้ '.$_POST["unit"].' สำเร็จ'));
         }
         else
         {

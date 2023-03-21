@@ -50,6 +50,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/unit" class="nav-link">
+                            <i class="nav-icon fas fa-book-open"></i>
+                            <p>
+                                Unit
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-header">Reports</li>
                     <li class="nav-item">
                         <a href="<?php echo PATH; ?>/backend/reports/MSF01" class="nav-link">
