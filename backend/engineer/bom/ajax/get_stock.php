@@ -4,7 +4,7 @@
 
 	
 	$sql = "SELECT * FROM stock ";
-	$sql .= " where status = 'Y' and type = 'MAT' order by stcode";  
+	$sql .= " where status = 'Y' and type != 'FG' order by stcode";  
 
 	$query = mysqli_query($conn,$sql);
 

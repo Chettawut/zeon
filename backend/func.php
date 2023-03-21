@@ -78,6 +78,13 @@ function convertDateTH(inputFormat) {
   return [pad(d.getMonth()+1),pad(d.getDate()), d.getFullYear()].join('/')
 }
 
+function arraySearch(arr,val) {
+    for (var i=0; i<arr.length; i++)
+        if (arr[i] === val)                    
+            return i;
+    return false;
+  }
+
 </script>
 
 <?php 

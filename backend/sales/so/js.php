@@ -367,7 +367,7 @@ function getSO() {
                         count] + '" data-whatever="' + result.socode[
                         count] + '" ><td>' + result.socode[count] +
                     '</td><td>' +  result.sfdate[count] + '</td><td>' + result
-                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td></tr>');
+                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td>' + result.amount[count] + '</td><td>' + result.unit[count] + '</td></tr>');
             }
 
             var table = $('#tableSO').DataTable({

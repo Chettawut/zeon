@@ -78,12 +78,12 @@
                                 <thead style="background-color:#D6EAF8;">
                                     <tr>
 
-                                        <th width="20%">SF No.</th>
-                                        <th width="20%">SF Date</th>
-                                        <th width="20%">FG Code</th>
-                                        <th width="20%">FG Name</th>
-                                        <th width="20%">Amount</th>
-                                        <th width="20%">Unit</th>
+                                        <th width="15%">SF No.</th>
+                                        <th width="10%">SF Date</th>
+                                        <th width="15%">FG Code</th>
+                                        <th width="30%">FG Name</th>
+                                        <th width="15%">Amount</th>
+                                        <th width="15%">Unit</th>
                                     </tr>
                                 </thead>
                                 <tbody>

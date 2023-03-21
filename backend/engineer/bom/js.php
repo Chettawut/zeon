@@ -17,14 +17,14 @@ $(function() {
         //    data: $("#frmMain").serialize(),
         success: function(result) {
             // alert(result)
-            for (count = 0; count < result.stcodemain.length; count++) {
+            for (count = 0; count < result.stcode.length; count++) {
 
 
                 $('#tableBom').append(
                     '<tr data-toggle="modal" data-target="#modal_edit" id="' + result
-                    .stcodemain[
-                        count] + '" data-whatever="' + result.stcodemain[
-                        count] + '"><td>' + result.stcodemain[count] + '</td><td>' +
+                    .stcode[
+                        count] + '" data-whatever="' + result.stcode[
+                        count] + '"><td>' + result.stcode[count] + '</td><td>' +
                     result.stname1[count] + '</td></tr>');
             }
 
