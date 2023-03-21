@@ -3,7 +3,7 @@
     include('../../../conn.php');
     date_default_timezone_set('Asia/Bangkok');
     
-    $sql = "SELECT stcodemain,stno FROM bom ";
+    $sql = "SELECT stno,count(stno) as num FROM bom ";
     $sql .= " where stcodemain = '".$_POST["stcodemain"]."' ";
     $sql .= " order by stno desc LIMIT 1";
     $query = mysqli_query($conn,$sql);

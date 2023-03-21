@@ -94,8 +94,8 @@ function onSelect_addstock(stcode, stname1, unit) {
             url: "ajax/add_bom.php",
             data: "stcode=" + stcode + "&stcodemain=" + stcodemain + "&unit=" + unit,
             success: function(result) {
-
-                getbom_detail(stcodemain)
+                // alert(result)
+                getbom_detail($('#stcode').val())
 
             }
         });

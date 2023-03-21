@@ -63,7 +63,7 @@
                     <div class="modal-footer">
                         <div class="col text-center">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-                            <button type="submit" id="btnEditBOM" form="frmEditBom" class="btn btn-primary">แก้ไข</button>
+                            <!-- <button type="submit" id="btnEditBOM" form="frmEditBom" class="btn btn-primary">แก้ไข</button> -->
                         </div>
                     </div>
                 </div>
