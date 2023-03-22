@@ -66,10 +66,7 @@
                                         Add Sales Forecast</button>
                                     <button type="button" id="btnRefresh" class="btn btn-primary"><i
                                             class="fas fa-sync-alt" aria-hidden="true"></i> Refresh</button>
-
-                                    <input type="hidden" id="printsocode" class="btn btn-default" name="printsocode"
-                                        value="John">
-                                    <input type="hidden" id="editsalecode" class="btn btn-default" value="John">
+                                    
 
                                 </div>
                             </form>
@@ -78,12 +75,13 @@
                                 <thead style="background-color:#D6EAF8;">
                                     <tr>
 
-                                        <th width="15%">SF No.</th>
+                                        <th width="10%">SF No.</th>
                                         <th width="10%">SF Date</th>
                                         <th width="15%">FG Code</th>
                                         <th width="30%">FG Name</th>
-                                        <th width="15%">Amount</th>
-                                        <th width="15%">Unit</th>
+                                        <th width="10%">Amount</th>
+                                        <th width="10%">Unit</th>
+                                        <th width="15%">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,13 +102,12 @@
         <?php 
          include_once('modal/modal_add.php');
          include_once('modal/modal_edit.php');
-         include_once('modal/modal_giveaway.php');
-         include_once('modal/modal_giveaway2.php');
          include_once('modal/modal_customer.php');
          include_once('modal/modal_stock.php');
          include_once('modal/modal_stock2.php');
          include_once('modal/modal_unit.php');
-         include_once('modal/modal_unit2.php');?>
+         include_once('modal/modal_unit2.php');
+         ?>
 
 
 

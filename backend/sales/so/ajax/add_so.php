@@ -36,7 +36,7 @@
                 //pono ต้องอยู่ท้ายตลอด
                 $StrSQL .= ", sono)";
                 $StrSQL .= "VALUES (";
-                $StrSQL .= "'".$socode."', '". $stcode[$key] ."', '". $unit[$key] ."' , '". $amount[$key] ."' , '01', '0', '1' ";            
+                $StrSQL .= "'".$socode."', '". $stcode[$key] ."', '". $unit[$key] ."' , '". $amount[$key] ."' , 'Active', '0', '1' ";            
                 $StrSQL .= ", '". ++$key ."' ) ";
                 $query = mysqli_query($conn,$StrSQL);
                 }

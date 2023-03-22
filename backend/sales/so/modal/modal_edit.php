@@ -37,10 +37,12 @@
                                 data-target="#modal_stock2"><i class="fa fa fa-tags" aria-hidden="true"></i>
                                 เพิ่มรายการ</button>
 
-                            <!-- <button type="button" id="btnAddSOGiveaway2" class="btn btn-info" data-toggle="modal"
-                                data-target="#modal_giveaway2"><i class="fa fa fa-gift" aria-hidden="true"></i>
-                                เพิ่มของแถม</button> -->
-
+                            <button type="button" id="btnCancel" style="display:none" class="btn btn-danger"><i
+                                    class="fa fa-times-circle" aria-hidden="true"></i>
+                                ยกเลิกใบสั่งขาย</button>
+                            <button type="button" id="btnActive" style="display:none" class="btn btn-warning"><i
+                                    class="fa fa-check-circle" aria-hidden="true"></i>
+                                คืนค่าให้ใบสั่งขาย</button>
                         </div>
                     </div>
                     <br>

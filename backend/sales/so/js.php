@@ -220,28 +220,19 @@ $('#modal_edit').on('show.bs.modal', function(event) {
     $("#tableEditSODetail").show();
     $("#printsocode").val(recipient);
 
-    var status_so = $("#" + recipient + " td:eq(5)").text();
+    var status_so = $("#" + recipient + " td:eq(6)").text();
     // alert(status_so);
-    if (status_so == "รออนุมัติขาย") {
-        // enabledSupSO(); 
-        $("#btnEdit").show();
-        $("#btnAddSOdetail2").show();
-        // $("#btnAddSOGiveaway2").show();
-    } else {
-        $("#btnEdit").hide();
-        $("#btnAddSOdetail2").hide();
-        // $("#btnAddSOGiveaway2").hide();
+
+    if (status_so == "Cancel")
+    {
+        $("#btnCancel").hide();
+        $("#btnActive").show();
     }
-
-    if (status_so == "ยกเลิกการใช้งาน")
-        $("#btnPrint").hide();
-    else
-        $("#btnPrint").show();
-
-    if ((status_so != "ยกเลิกการใช้งาน") && (status_so != "รออนุมัติขาย") && (status_so != "รอออกใบกำกับภาษี"))
-        $("#btnInvoice").show();
-    else
-        $("#btnInvoice").hide();
+    else if (status_so == "Active")
+    {
+        $("#btnCancel").show();
+        $("#btnActive").hide();
+    }
 
 
     $.ajax({
@@ -341,25 +332,11 @@ function getSO() {
             for (count = 0; count < result.socode.length; count++) {
 
 
-                if (result.supstatus[count] == '01') {
-                    supstatus = 'รออนุมัติขาย'
-                    suptitle = 'รออนุมัติขาย'
-                } else if (result.supstatus[count] == '02') {
-                    supstatus = 'รอออกใบกำกับภาษี'
-                    suptitle = 'รอออกใบกำกับภาษี'
-                } else if (result.supstatus[count] == '03') {
-                    supstatus = 'รอยืนยันส่งสินค้า'
-                    suptitle = 'รอยืนยันส่งสินค้า'
-                } else if (result.supstatus[count] == '04') {
-                    supstatus = 'สมบูรณ์';
-                    suptitle = 'สมบูรณ์';
-                } else if (result.supstatus[count] == 'C') {
-                    supstatus = 'ยกเลิกการใช้งาน'
-                    suptitle = 'ยกเลิกการใช้งาน'
-                } else if (result.supstatus[count] == 'N') {
-                    supstatus = 'ยังส่งของไม่ครบ'
-                    suptitle = 'ยังส่งของไม่ครบ'
-                }
+                // if (result.supstatus[count] == '01') {
+                //     supstatus = 'Active'
+                //     suptitle = 'Active'
+                // } 
+                
                 // sodate = result
                 //     .sodate[count].substring(8) + '-' + result
                 //     .sodate[count].substring(5, 7) + '-' + result
@@ -372,7 +349,7 @@ function getSO() {
                         count] + '" ><td>' + result.socode[count] +
                     '</td><td>' + result.sfdate[count] + '</td><td>' + result
                     .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td>' + result.amount[
-                        count] + '</td><td>' + result.unit[count] + '</td></tr>');
+                        count] + '</td><td>' + result.unit[count] + '</td><td>' + result.supstatus[count] + '</td></tr>');
             }
 
             var table = $('#tableSO').DataTable({
@@ -390,38 +367,6 @@ function getSO() {
         }
     });
 }
-
-$.ajax({
-    type: "POST",
-    url: "ajax/get_customer.php",
-    success: function(result) {
-
-        for (count = 0; count < result.code.length; count++) {
-
-            $('#table_id tbody').append(
-                '<tr data-toggle="modal" data-dismiss="modal"  id="' + result
-                .cuscode[count] + '" onClick="onClick_tr(this.id,\'' + result.cusname[
-                    count] + '\',\'' + result.address[count] + '\',\'' + result.tel[count] +
-                '\');"><td>' + result.code[
-                    count] + '</td><td>' +
-                result.cuscode[count] + '</td><td>' +
-                result.cusname[count] + '</td></tr>');
-
-
-        }
-
-        $('#table_id').DataTable({
-            "dom": '<"pull-left"f>rt<"bottom"p><"clear">',
-            "ordering": true
-        });
-
-
-        $(".dataTables_filter input[type='search']").attr({
-            size: 40,
-            maxlength: 40
-        });
-    }
-});
 
 //modal เพิ่มของขาย
 $.ajax({
@@ -833,55 +778,43 @@ function onDelete_MainTable(code, type) {
 
 
 // ยกเลิกอนุมัติการขาย
-$("#btnCancle").click(function() {
-    var so_code = $("#editsocode").val();
-
-    var amount = [];
-    var stcode = [];
-    var unit = [];
-    var price = [];
-    var discount = [];
-    var places = [];
-
-    var stcode2 = [];
-    var amount2 = [];
-    var unit2 = [];
-    var places2 = [];
-
-    $(':disabled').each(function(event) {
-        $(this).removeAttr('disabled');
-    });
+$("#btnCancel").click(function() {
+    let so_code = $("#editsfcode").val();
 
 
-    $('#tableEditSODetail tbody tr').each(function() {
-        stcode.push($(this).attr("id"));
-    });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        amount.push($(this).find("td #amount1" + (++key)).val());
-    });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        unit.push($(this).find("td #unit1" + (++key)).val());
-    });
-
-    if (confirm("คุณต้องการยกเลิกใบสั่งขาย " + so_code + " หรือไม่")) {
+    if (confirm("คุณต้องการยกเลิก  Sales Forecast " + so_code + " หรือไม่")) {
+        // alert($("#frmEditSO").serialize())
         $.ajax({
             type: "POST",
-            data: $("#frmEditSO").serialize() + "&amount=" + amount + "&stcode=" + stcode +
-                "&unit=" + unit +
-                "&price=" + price +
-                "&places=" + places +
-                "&discount=" + discount + "&stcode2=" + stcode2 + "&amount2=" + amount2 +
-                "&unit2=" + unit2 +
-                "&places2=" + places2,
-            url: "ajax/cancle_so.php",
+            url: "ajax/cancel_so.php",
+            data: "socode=" + so_code,
             success: function(result) {
                 alert(result["message"]);
                 window.location.reload();
             }
         });
-    } else
-        window.location.reload();
+    } 
 });
+
+// คืนค่าอนุมัติการขาย
+$("#btnActive").click(function() {
+    let so_code = $("#editsfcode").val();
+
+
+    if (confirm("คุณต้องการคืนค่า Sales Forecast " + so_code + " หรือไม่")) {
+        // alert($("#frmEditSO").serialize())
+        $.ajax({
+            type: "POST",
+            url: "ajax/restore_so.php",
+            data: "socode=" + so_code,
+            success: function(result) {
+                alert(result["message"]);
+                window.location.reload();
+            }
+        });
+    } 
+});
+
 
 
 //Refresh
