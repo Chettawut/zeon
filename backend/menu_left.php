@@ -32,13 +32,44 @@
                             </p>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/production/pp" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                            Production Plan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/production/wo" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                                Work order
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/store/gr" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                            Goods Receipt
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-header">Data</li>
                     <li class="nav-item">
                         <a href="<?php echo PATH; ?>/backend/store/inventory" class="nav-link">
                             <i class="nav-icon fa fa-cube"></i>
                             <p>
                                 Inventory
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/store/supplier" class="nav-link">
+                            <i class="nav-icon fa fa-cube"></i>
+                            <p>
+                            Supplier
                             </p>
                         </a>
                     </li>

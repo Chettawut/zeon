@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ใบสั่งงานผลิต (Work Order) </title>
+    <title>แผนผลิต (Production Plan) </title>
 
     <?php 
     include_once('css.php'); 
@@ -42,12 +42,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0"><i class="nav-icon fas fa-clipboard-list"></i> Work Order</h1>
+                            <h1 class="m-0"><i class="nav-icon fas fa-clipboard-list"></i> Production Plan</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="<?php echo PATH; ?>/production">Production</a></li>
-                                <li class="breadcrumb-item active">Work Order</li>
+                                <li class="breadcrumb-item active">Production Plan</li>
                             </ol>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
 
                                     <button type="button" id="btnAddWO" data-toggle="modal" data-target="#modal_add"
                                         class="btn btn-success"><i class="fa fa fa-tags" aria-hidden="true"></i>
-                                        Add Sales Forecast</button>
+                                        Add Production Plan</button>
                                     <button type="button" id="btnRefresh" class="btn btn-primary"><i
                                             class="fas fa-sync-alt" aria-hidden="true"></i> Refresh</button>
                                     
@@ -75,8 +75,8 @@
                                 <thead style="background-color:#D6EAF8;">
                                     <tr>
 
-                                        <th width="10%">SF No.</th>
-                                        <th width="10%">SF Date</th>
+                                        <th width="10%">PP No.</th>
+                                        <th width="10%">PP Date</th>
                                         <th width="15%">FG Code</th>
                                         <th width="30%">FG Name</th>
                                         <th width="10%">Amount</th>

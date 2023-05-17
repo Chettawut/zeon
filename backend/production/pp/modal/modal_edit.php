@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group col-lg-5 col-12">
                             <label class="col-form-label">SF Date</label>
-                            <input type="month" class="form-control" size="4" name="editsfdate" id="editsfdate">
+                            <input type="date" class="form-control" size="4" name="editsfdate" id="editsfdate">
                         </div>
 
                     </div>

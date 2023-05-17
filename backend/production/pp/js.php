@@ -200,7 +200,7 @@ function previewSOcode() {
         url: "ajax/get_socode.php",
         success: function(result) {
 
-            $("#socode").val(result.socode);
+            $("#socode").val(result.ppcode);
 
         }
     });
@@ -209,6 +209,7 @@ function previewSOcode() {
 
 $('#modal_add').on('show.bs.modal', function(event) {
     previewSOcode()
+    $("#sfdate").val(new Date().toISOString().substring(0, 10));
 });
 
 $('#modal_edit').on('show.bs.modal', function(event) {
@@ -325,7 +326,7 @@ $('#modal_edit').on('show.bs.modal', function(event) {
 function getSO() {
     $.ajax({
         type: "POST",
-        url: "ajax/get_so.php",
+        url: "ajax/get_pp.php",
         success: function(result) {
             var supstatus, suptitle;
 
