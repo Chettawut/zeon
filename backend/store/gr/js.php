@@ -26,7 +26,6 @@ $(function() {
                         count] +
                     '</td><td>' + result
                     .grdate[count] + '</td><td>' + result
-                    .pocode[count] + '</td><td>' + result
                     .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td ><span "title="' + result.grstatus[count] + '">' +
                     result.grstatus[count] +
                     '</span></td></tr>');
@@ -339,28 +338,19 @@ $('#modal_edit').on('show.bs.modal', function(event) {
                             result.grno[count] +
                             '</p></td><td><p class="form-control-static" style="text-align:center">' +
                             result
-                            .pocode[count] +
-                            '</p></td><td><p class="form-control-static" style="text-align:center">' +
-                            result
                             .stcode[count] +
                             '</p></td><td> <p class="form-control-static" style="text-align:left">' +
                             result.stname1[count] +
-                            '</p></td><td><div class="input-group"><input type="text" class="form-control" name="unit" id="unit' +
+                            '</p></td><td><input type="text" class="form-control" name="amount1"  id="amount1' +
+                            result.grno[count] +
+                            '"  value="' +
+                            result.amount[count] +
+                            '" readonly></td><td><div class="input-group"><input type="text" class="form-control" name="unit" id="unit' +
                             result.grno[count] + '" value="' +
                             result.unit[count] +
                             '" readonly><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit" data-whatever="' +
                             result.grno[count] +
-                            ',tableEditGRDetail," type="button"><span class="fa fa-search"></span></button></span></div></td><td><input type="text" class="form-control" name="amount1"  id="amount1' +
-                            result.grno[count] +
-                            '"  value="' +
-                            result.amount[count] +
-                            '" readonly></td><td><input type="text" class="form-control" name="recamount1" id="recamount1' +
-                            result.grno[count] + '" value="' +
-                            result.recamount[count] +
-                            '" readonly></td><td><p style="text-align:center" class="form-control-static" title="' +
-                            result.grstatus[count] + '" >' + result.grstatus[
-                            count] +
-                            '</p></td></tr>'
+                            ',tableEditGRDetail," type="button"><span class="fa fa-search"></span></button></span></div></td></tr>'
                         );
 
 
@@ -433,7 +423,7 @@ $("#frmAddGR").submit(function(event) {
         stcode.push($(this).find("td #stcode" + (++key)).text());
     });
     $('#tableGRDetail tbody tr').each(function(key) {
-        amount.push($(this).find("td #amount1" + (++key)).val());
+        amount.push($(this).find("td #amount" + (++key)).val());
     });
     $('#tableGRDetail tbody tr').each(function(key) {
         unit.push($(this).find("td #unit" + (++key)).val());

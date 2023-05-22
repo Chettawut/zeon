@@ -37,8 +37,8 @@
         $query = mysqli_query($conn,$strSQL);
 
         foreach ($stcode as $key=> $value) {
-            $strSQL2 = "UPDATE product_level SET ";
-            $strSQL2 .= " amount= amount+'".$amount[$key]."' ";
+            $strSQL2 = "UPDATE stock_level SET ";
+            $strSQL2 .= " amount = amount+'".$amount[$key]."' ";
             $strSQL2 .= "WHERE stcode = '".$stcode[$key]."' and places = '1' ";
             $query2 = mysqli_query($conn,$strSQL2);
             

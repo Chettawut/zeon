@@ -59,7 +59,7 @@
                                     <th style="width:300px;text-align:left">รายการสินค้า</th>
                                     <th style="width:100px;text-align:center">จำนวน</th>
                                     <th style="width:100px;text-align:center">หน่วย</th>                                    
-                                    <th style="width:100px;text-align:center">สถานะ</th>
+                                    <th style="width:100px;text-align:center"></th>
                                 </tr>
                             </thead>
                             <tbody class="text-nowrap">

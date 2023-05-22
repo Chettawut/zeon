@@ -1,475 +1,154 @@
 <script type="text/javascript">
+//modal เปิดซ้อนกันได้
+$(document).on('show.bs.modal', '.modal', function() {
+    const zIndex = 1040 + 10 * $('.modal:visible').length;
+    $(this).css('z-index', zIndex);
+    setTimeout(() => $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass(
+        'modal-stack'));
+});
 $(function() {
 
-    $("#sideSales").show()
-    getSO();
-
-
-
-});
-
-// ย้ายไปหน้า เพิ่ม SF
-// $("#btnAddSO").click(function() {
-
-//     enabledSupSO()
-//     $("#socode").prop('disabled', true);
-//     $("#sfdate").val(new Date().toISOString().substring(0, 7));
-
-//     previewSOcode();
-
-
-//     $("#txtHead").text('เพิ่มใบสั่งขาย (Add Sales Order)');
-//     $("#frmSO").show();
-//     $("#divfrmSO").show();
-//     $("#divfrmEditSO").hide();
-//     // $('#divtableSO').hide();
-
-//     $("#btnAddSubmit").show();
-//     // $("#btnRefresh").hide();
-//     $("#btnPrint").hide();
-
-// });
-
-function onClick_tr(id, supname, address, tel) {
-    $('#cuscode').val(id);
-    $('#tdname').val(supname);
-    $('#address').val(address);
-    $('#tel').val(tel.substring(0, 3) + '-' + tel.substring(3));
-
-    $('#editcuscode').val(id);
-    $('#editcusname').val(supname);
-    $('#editaddress').val(address);
-    $('#edittel').val(tel.substring(0, 3) + '-' + tel.substring(3));
-}
-
-
-function onCreate_detail(stcode, stname1, unit) {
-
-    var all_row = $('#tableSODetail tr').length;
-
-    $('#tableSODetail').append(
-        '<tr id="new' + all_row +
-        '" ><td><p class="form-control-static" style="text-align:center">' +
-        all_row +
-        '</p></td><td><p class="form-control-static" name="stcode1"  id="stcode1' +
-        all_row +
-        '" style="text-align:center">' +
-        stcode +
-        '</p></td><td><p class="form-control-static" name="stname1"  id="stname1' +
-        all_row +
-        '" style="text-align:left" >' +
-        stname1 +
-        '</p></td><td><input type="number" class="form-control" name="amount1"  id="amount1' +
-        all_row +
-        '" min="1" value="1"></td><td><div class="input-group"><input type="text" class="form-control" name="unit1" id="unit1' +
-        all_row + '" value="' +
-        unit +
-        '" disabled><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit" data-whatever="' +
-        all_row +
-        ',tableSODetail,' +
-        stcode +
-        '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
-        all_row +
-        ',\'add\')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
-    );
-
-
-}
-
-
-function onCal_detail(row) {
-    $('#total1' + row).html(formatMoney(($(
-            '#amount1' + row)
-        .val() *
-        $('#price1' +
-            row).val()) - ((($(
-            '#amount1' + row
-        )
-        .val() *
-        $(
-            '#price1' + row)
-        .val()) * $(
-        '#discount1' +
-        row).val()) / 100), 2));
-
-    $('#amount1' + row).change(function() {
-        $('#total1' + row).html(formatMoney(($(
-                '#amount1' + row)
-            .val() *
-            $('#price1' +
-                row).val()) - ((($(
-                '#amount1' + row
-            )
-            .val() *
-            $(
-                '#price1' + row)
-            .val()) * $(
-            '#discount1' +
-            row).val()) / 100), 2));
-    });
-
-    $('#price1' + row).change(function() {
-        $('#total1' + row).html(formatMoney(($(
-                '#amount1' + row)
-            .val() *
-            $('#price1' +
-                row).val()) - ((($(
-                '#amount1' + row
-            )
-            .val() *
-            $(
-                '#price1' + row)
-            .val()) * $(
-            '#discount1' +
-            row).val()) / 100), 2));
-    });
-
-    $('#discount1' + row).change(function() {
-        $('#total1' + row).html(formatMoney(($(
-                '#amount1' + row)
-            .val() *
-            $('#price1' +
-                row).val()) - ((($(
-                '#amount1' + row
-            )
-            .val() *
-            $(
-                '#price1' + row)
-            .val()) * $(
-            '#discount1' +
-            row).val()) / 100), 2));
-    });
-
-    $('input[type=text]').on('keydown', function(e) {
-        $('#total1' + row).html(formatMoney(($(
-                '#amount1' + row)
-            .val() *
-            $('#price1' +
-                row).val()) - ((($(
-                '#amount1' + row
-            )
-            .val() *
-            $(
-                '#price1' + row)
-            .val()) * $(
-            '#discount1' +
-            row).val()) / 100), 2));
-    });
-
-}
-
-function onClick_unit(unit, target) {
-
-    var row = target.split(',')[0];
-    var id = target.split(',')[1];
-    var stcode = target.split(',')[2];
-    // alert(target + ' ' + stcode);
-    // console.log($('#amount1' + row).val() + ' ' + stcode);
-
 
     $.ajax({
         type: "POST",
-        url: "ajax/cal_stock.php",
-        data: "idcode=" + stcode,
+        url: "ajax/get_wo.php",
+        //    data: $("#frmMain").serialize(),
         success: function(result) {
 
-            $('#unit1' + row).val(unit);
-            if (unit == 'ลัง')
-                $('#price1' + row).val(result.ratio * result.sellprice);
-            else
-                $('#price1' + row).val(result.sellprice);
+            for (count = 0; count < result.wocode.length; count++) {
+
+                $('#tableWO').append(
+                    '<tr id="' + result.wocode[
+                        count] +
+                    '" data-toggle="modal" data-target="#modal_edit" data-whatever="' + result
+                    .wocode[
+                        count] + '" ><td>' + result.wocode[
+                        count] +
+                    '</td><td>' + result
+                    .wodate[count] + '</td><td>' + result
+                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td style="text-align:center" ><span "title="' + result.wostatus[count] + '">' +
+                    result.wostatus[count] +
+                    '</span></td></tr>');
+
+            }
+
+            $('#tableWO').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "responsive": false,
+                "scrollX": true
+            });
+
+            $(".dataTables_filter input[type='search']").css({
+                'width': '80%'
+            });
+
 
         }
     });
 
-}
-
-function onClick_unit2(unit, target) {
-
-    var row = target.split(',')[0];
-    var id = target.split(',')[1];
-    // alert(row + ' ' + (target));
-
-    $('#unit2' + row).val(unit);
-
-}
-
-function previewSOcode() {
     $.ajax({
         type: "POST",
-        url: "ajax/get_socode.php",
-        success: function(result) {
-
-            $("#socode").val(result.socode);
-
-        }
-    });
-
-}
-
-$('#modal_add').on('show.bs.modal', function(event) {
-    previewSOcode()
-});
-
-$('#modal_edit').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget);
-    var recipient = button.data('whatever');
-    var modal = $(this);
-
-    $("#editsocode").val(recipient);
-    $("#tableEditSODetail").show();
-    $("#printsocode").val(recipient);
-
-    var status_so = $("#" + recipient + " td:eq(6)").text();
-    // alert(status_so);
-
-    if (status_so == "Cancel")
-    {
-        $("#btnCancel").hide();
-        $("#btnActive").show();
-    }
-    else if (status_so == "Active")
-    {
-        $("#btnCancel").show();
-        $("#btnActive").hide();
-    }
-
-
-    $.ajax({
-        type: "POST",
-        url: "ajax/getsup_so.php",
-        data: "idcode=" + recipient,
-        success: function(result) {
-
-            $("#editsfcode").val(result.sfcode);
-            $("#editsfdate").val(result.sfdate);
-            $("#editremark").val(result.remark);
-
-        }
-    });
-
-    if (($("#" + recipient + " td:eq(5)").text() != "สมบูรณ์") && ($("#" + recipient + " td:eq(5)").text() !=
-            "ยกเลิกการใช้งาน"))
-        $("#btnCancle").show();
-    else
-        $("#btnCancle").hide();
-
-    $("#txtHead").text('แก้ไขใบสั่งขาย (Edit Sale Order)');
-
-    $("#divfrmEditSO").show();
-    // $('#divtableSO').hide();
-    // $('#btnAddSO').hide();
-    // $("#btnRefresh").hide();
-    $("#tableEditSODetail tbody").empty();
-    // $("#tableEditSOGiveaway tbody").empty();
-    // $('#tableEditSOGiveaway').hide();
-    var option = '';
-    $.ajax({
-        type: "POST",
-        url: "ajax/get_places.php",
+        url: "ajax/get_stock.php",
 
         success: function(result) {
 
-            for (count = 0; count < result.places.length; count++) {
+            for (count = 0; count < result.code.length; count++) {
 
-                option += '<option value="' + result.placescode[count] + '">' + result
-                    .places[count] + '</option>';
+                let type
+                if (result.type[count] == 'FG')
+                    type = 'Finish Goods'
+                else if (result.type[count] == 'MAT')
+                    type = 'Material'
+                else if (result.type[count] == 'SFG')
+                    type = 'Semi Finish Goods'
+
+                $('#table_stock tbody').append(
+                    '<tr data-toggle="modal" data-dismiss="modal"  id="' + result
+                    .stcode[count] + '" "><td>' + (count + 1) + '</td><td>' +
+                    result.stcode[count] + '</td><td>' +
+                    result.stname1[count] + '</td><td>' +
+                    type + '</td></tr>');
 
 
             }
-            $.ajax({
-                type: "POST",
-                url: "ajax/getsup_sodetail.php",
-                data: "idcode=" + recipient,
-                success: function(result) {
-                    for (count = 0; count < result.stcode.length; count++) {
 
-                        $('#tableEditSODetail').append(
-                            '<tr id="' + result.codedetail[count] +
-                            '" ><td name="sono" id="sono" ><p class="form-control-static" style="text-align:center">' +
-                            result.sono[count] +
-                            '</p></td><td><p class="form-control-static" style="text-align:center">' +
-                            result
-                            .stcode[count] +
-                            '</p></td><td> <p class="form-control-static" style="text-align:left">' +
-                            result.stname1[count] +
-                            '</p></td><td><input type="text" class="form-control" onChange="getTotal(' +
-                            result
-                            .sono[count] + ');" name="amount1"  id="amount1' +
-                            result.sono[count] +
-                            '"  value="' +
-                            result.amount[count] +
-                            '"></td><td><div class="input-group"><input type="text" class="form-control" name="unit1" id="unit1' +
-                            result.sono[count] + '" value="' +
-                            result.unit[count] +
-                            '" disabled><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit" data-whatever="' +
-                            result.sono[count] +
-                            ',tableEditSODetail,' +
-                            result
-                            .stcode[count] +
-                            '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
-                            result.codedetail[count] +
-                            ',\'edit\')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
-                        );
+            $('#table_stock').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "responsive": false
+            });
 
-                    }
+
+            $(".dataTables_filter input[type='search']").css({
+                'width': '80%'
+            });
+        }
+    });
+
+})
+
+
+$('#btnGetPO').click(function() {
+    let supcode = $('#add_supcode').val()
+    var table = $('#table_po').DataTable();
+
+    table.clear().draw().destroy();
+    if (supcode != '') {
+        $.ajax({
+            type: "POST",
+            url: "ajax/get_po.php",
+            data: "supcode=" + supcode,
+            success: function(result) {
+                for (count = 0; count < result.pocode.length; count++) {
+
+                    $('#table_po tbody').append(
+                        '<tr id="' +
+                        result.pocode[count] + ',' +
+                        result.pono[count] +
+                        '" );"><td><input type="checkbox" id="' + 'chk' +
+                        count + '" name="' + 'chk' +
+                        count + '" value="' + count + '" ></td><td>' + [count + 1] +
+                        '</td><td>' +
+                        result.pocode[count] + '</td><td>' +
+                        result.stcode[count] + '</td><td>' + result.stname1[count] +
+                        '</td><td>' +
+                        result.unit[count] + '</td><td style="text-align:right">' +
+                        result.amount[count] +
+                        '</td><td style="text-align:right">' + result.recamount[
+                            count] +
+                        '</td><td><p style="text-align:center" class="form-control-static" title="' +
+                        result.supstatus[count] + '" >' + result.supstatus[count] +
+                        '</p></td></tr>');
+
 
                 }
-            });
-
-        }
-    });
-});
-
-
-function getSO() {
-    $.ajax({
-        type: "POST",
-        url: "ajax/get_so.php",
-        success: function(result) {
-            var supstatus, suptitle;
-
-            for (count = 0; count < result.socode.length; count++) {
-
-
-                // if (result.supstatus[count] == '01') {
-                //     supstatus = 'Active'
-                //     suptitle = 'Active'
-                // } 
-                
-                // sodate = result
-                //     .sodate[count].substring(8) + '-' + result
-                //     .sodate[count].substring(5, 7) + '-' + result
-                //     .sodate[count].substring(0, 4);
-
-                $('#tableSO').append(
-                    '<tr data-toggle="modal" data-target="#modal_edit" id="' + result
-                    .socode[
-                        count] + '" data-whatever="' + result.socode[
-                        count] + '" ><td>' + result.socode[count] +
-                    '</td><td>' + result.sfdate[count] + '</td><td>' + result
-                    .stcode[count] + '</td><td>' + result.stname1[count] + '</td><td>' + result.amount[
-                        count] + '</td><td>' + result.unit[count] + '</td><td>' + result.supstatus[count] + '</td></tr>');
             }
+        });
 
-            var table = $('#tableSO').DataTable({
-                "dom": '<"pull-right"f>rt<"bottom"p><"clear">',
-                "order": [1, 'desc'],
-                "pageLength": 20
-            })
+        $('#modal_po').modal('show');
 
+    } else {
+        Swal.fire('แจ้งเตือน', "กรุณาเลือกผู้ขายก่อนเลือกรายการ", 'info');
+    }
 
-            $(".dataTables_filter input[type='search']").attr({
-                size: 40,
-                maxlength: 40
-            });
+})
 
-        }
-    });
+function onDeleteDetail(table, id) {
+    $("#" + table + " tbody").empty();
+    $("#" + id).hide();
+
+    if (table == "tableRRGiveaway")
+        $('#tableRRGiveaway').hide();
 }
-
-//modal เพิ่มของขาย
-$.ajax({
-    type: "POST",
-    url: "ajax/get_stock.php",
-
-    success: function(result) {
-
-        for (count = 0; count < result.code.length; count++) {
-
-            $('#table_stock tbody').append(
-                '<tr data-toggle="modal" data-dismiss="modal" data-target="#modelStockEdit" id="' +
-                result.stcode[count] + '" data-whatever="' + result
-                .code[count] + '"><td>' + result.stcode[count] +
-                '</td><td>' +
-                result.stname1[count] +
-                '</td><td>' +
-                result.unit[count] +
-                '</td></tr>');
-
-
-        }
-
-        $('#table_stock').DataTable({
-            "dom": '<"pull-left"f>rt<"bottom"p><"clear">',
-            "ordering": true
-        });
-
-
-        $(".dataTables_filter input[type='search']").attr({
-            size: 40,
-            maxlength: 40
-        });
-    }
-});
-
-//modal เพิ่มของขาย
-$.ajax({
-    type: "POST",
-    url: "ajax/get_stock.php",
-
-    success: function(result) {
-
-        for (count = 0; count < result.code.length; count++) {
-
-            $('#table_stock2 tbody').append(
-                '<tr data-toggle="modal" data-dismiss="modal" data-target="#modelStockEdit" id="' +
-                result.stcode[count] + '" data-whatever="' + result
-                .code[count] + '"><td>' + result.stcode[count] +
-                '</td><td>' +
-                result.stname1[count] +
-                '</td><td>' +
-                result.unit[count] +
-                '</td></tr>');
-
-        }
-
-        $('#table_stock2').DataTable({
-            "dom": '<"pull-left"f>rt<"bottom"p><"clear">',
-            "ordering": true
-        });
-
-
-        $(".dataTables_filter input[type='search']").attr({
-            size: 40,
-            maxlength: 40
-        });
-    }
-});
-
-$.ajax({
-    type: "POST",
-    url: "ajax/get_unit.php",
-
-    success: function(result) {
-
-        for (count = 0; count < result.unitcode.length; count++) {
-
-            $('#table_unit tbody').append(
-                '<tr data-toggle="modal" data-dismiss="modal" onClick="onClick_unit(\'' +
-                result.unit[count] + '\');"  id="' +
-                result
-                .unitcode[count] + '" );"><td>' + result.unitcode[count] +
-                '</td><td>' +
-                result.unit[count] + '</td></tr>');
-
-
-        }
-
-        $('#table_unit').DataTable({
-            "dom": '<"pull-left"f>rt<"bottom"p><"clear">',
-            "ordering": true
-        });
-
-
-        $(".dataTables_filter input[type='search']").attr({
-            size: 40,
-            maxlength: 40
-        });
-    }
-});
-
-
 
 $('#modal_unit').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget)
@@ -488,7 +167,7 @@ $('#modal_unit').on('show.bs.modal', function(event) {
                     '<tr data-toggle="modal" data-dismiss="modal" onClick="onClick_unit(\'' +
                     result.unit[count] + '\',\'' + recipient + '\');"  id="' +
                     result
-                    .unitcode[count] + '" );"><td>' + result.unitcode[count] +
+                    .unitcode[count] + '" );"><td>' + (count + 1) +
                     '</td><td>' +
                     result.unit[count] + '</td></tr>');
 
@@ -500,162 +179,39 @@ $('#modal_unit').on('show.bs.modal', function(event) {
     });
 })
 
-$('#modal_unit2').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget)
-    var recipient = button.data('whatever')
-    var modal = $(this);
+function getTotal(row) {
+    $('#total' + row).val(formatMoney(($('#amount' + row).val() *
+        $('#price' +
+            row).val()) - ((($('#amount' + row).val() *
+        $(
+            '#price' + row).val()) * $(
+        '#discount' +
+        row).val()) / 100), 2));
 
-    $.ajax({
-        type: "POST",
-        url: "ajax/get_unit.php",
+}
 
-        success: function(result) {
-            $('#table_unit2 tbody').empty();
-            for (count = 0; count < result.unitcode.length; count++) {
-
-                $('#table_unit2 tbody').append(
-                    '<tr data-toggle="modal" data-dismiss="modal" onClick="onClick_unit2(\'' +
-                    result.unit[count] + '\',\'' + recipient + '\');"  id="' +
-                    result
-                    .unitcode[count] + '" );"><td>' + result.unitcode[count] +
-                    '</td><td>' +
-                    result.unit[count] + '</td></tr>');
-
-
-            }
-
-
-        }
-    });
-})
-
-
-
-// กดยืนยันเพิ่ม SO
-$("#frmAddSO").submit(function(event) {
-    event.preventDefault();
-
-    var amount = [];
-    var stcode = [];
-    var unit = [];
-    var price = [];
-    var discount = [];
-
-
-    $('#tableSODetail tbody tr').each(function(key) {
-        stcode.push($(this).find("td #stcode1" + (++key)).text());
-    });
-    $('#tableSODetail tbody tr').each(function(key) {
-        amount.push($(this).find("td #amount1" + (++key)).val());
-    });
-    $('#tableSODetail tbody tr').each(function(key) {
-        unit.push($(this).find("td #unit1" + (++key)).val());
-    });
-    // $('#tableSODetail tbody tr').each(function(key) {
-    //     price.push($(this).find("td #price1" + (++key)).val());
-    // });
-    // $('#tableSODetail tbody tr').each(function(key) {
-    //     discount.push($(this).find("td #discount1" + (++key)).val());
-    // });
-    // alert($("#frmAddSO").serialize())
-
-    if (stcode != 0) {
-
-        $(':disabled').each(function(event) {
-            $(this).removeAttr('disabled');
-        });
-
-        $.ajax({
-            type: "POST",
-            url: "ajax/add_so.php",
-            data: $("#frmAddSO").serialize() + "&amount=" + amount + "&stcode=" +
-                stcode + "&unit=" + unit,
-            success: async function(result) {
-
-                if (result.status == 1) // Success
-                {
-                    await Swal.fire('สำเร็จ', result.message, 'success');
-                    window.location.reload();
-                    // console.log(result.message);
-                } else {
-                    alert(result.message);
-                    $("#socode").prop("disabled", true);
-                    $("#cuscode").prop("disabled", true);
-                    $("#cusname").prop("disabled", true);
-                    $("#tdname").prop("disabled", true);
-                    $("#tel").prop("disabled", true);
-                    $("#address").prop("disabled", true);
-
-                    // console.log(result.message);
-                }
-            }
-        });
-
-    } else {
-        Swal.fire('เกิดข้อผิดพลาด', 'กรุณาเพิ่มรายการ', 'error')
-    }
-
+$('#btnPrintGR').click(function() {
+    alert('อยู่ระหว่างการพัฒนา')
 });
 
-// กดยืนยันแก้ไข SO
-$("#frmEditSO").submit(function(event) {
-    event.preventDefault();
-
-    // alert('ระบบแก้ไขกำลังปรับปรุง')
-
-    var amount = [];
-    var stcode = [];
-    var unit = [];
-
-    $(':disabled').each(function(event) {
-        $(this).removeAttr('disabled');
-    });
-
-    $('#tableEditSODetail tbody tr').each(function() {
-        stcode.push($(this).attr("id"));
-    });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        amount.push($(this).find("td #amount1" + (++key)).val());
-    });
-    $('#tableEditSODetail tbody tr').each(function(key) {
-        unit.push($(this).find("td #unit1" + (++key)).val());
-    });
-
-    // alert(stcode)
-    // alert($("#frmEditSO").serialize())
-    $.ajax({
-        type: "POST",
-        url: "ajax/edit_so.php",
-        data: $("#frmEditSO").serialize() + "&amount=" + amount + "&stcode=" + stcode +
-            "&unit=" + unit,
-        success: async function(result) {
-
-            if (result.status == 1) // Success
-            {
-                await Swal.fire('สำเร็จ', result.message, 'success');
-                window.location.reload();
-                // console.log(result.message);
-            } else {
-                alert(result.message);
-                $("#editsfcode").prop("disabled", true);
-                // console.log(result.message);
-            }
-        }
-    });
-
+$('#btnCancleGR').click(function() {
+    alert('อยู่ระหว่างการพัฒนา')
 });
 
-// เพิ่ม so detail เมื่อเลือกสต๊อก
-$("#table_stock").delegate('tbody tr', 'click', function() {
-    var id = $(this).attr("id");
 
+// เพิ่ม po detail เมื่อเลือกสต๊อก
+$("#table_stock").delegate('tr', 'click', function() {
+    let id = $(this).attr("id");
+
+    // alert(id)
+    // $('#tableGRDetail').show();
 
     $.ajax({
         type: "POST",
         url: "ajax/getsup_stock.php",
         data: "idcode=" + id,
         success: function(result) {
-
+            // alert(result)
             var today = new Date();
             var dd = today.getDate() + 7;
 
@@ -670,9 +226,23 @@ $("#table_stock").delegate('tbody tr', 'click', function() {
             }
             today = yyyy + '-' + mm + '-' + dd;
             // console.log(today);
+            let all_row = []
+            // $('#tablePoDetail tbody tr').each(function() {
+            //     row.push($(this).find("td #stcode" + (++key)).text());
+            // });
+            $('#tableWODetail tbody tr').each(function() {
+                all_row.push($(this).attr("id"));
+            });
 
-            onCreate_detail(result.stcode, result.stname1, result
-                .unit);
+
+            if (all_row.length == 0)
+                all_row = 1;
+            else {
+                all_row = parseInt(all_row[(all_row.length - 1)].substring(3, 4)) + 1
+            }
+
+            onCreate_detail($('#tableWODetail tr').length, result.stcode, result.stname1, 1, result
+                .unit, result.price, 0)
 
         }
     });
@@ -680,145 +250,229 @@ $("#table_stock").delegate('tbody tr', 'click', function() {
 
 });
 
-// เพิ่ม so detail เมื่อเลือกสต๊อกเพิ่มเติม
-$("#table_stock2").delegate('tbody tr', 'click', function() {
-    var id = $(this).attr("id");
-    var option = '';
+function onCreate_detail(row, stcode, stname1, amount, unit) {
 
-    if (confirm("คุณต้องการเพิ่มสินค้ารหัส " + id + " หรือไม่")) {
-        $.ajax({
-            type: "POST",
-            url: "ajax/add_sodetail.php",
-            data: "stcode=" + id + "&socode=" + $("#editsfcode").val(),
-            success: function(result) {
-                // alert(result.message);
+    $('#tableWODetail tbody').append(
+        '<tr id="new' + row +
+        '" ><td name="pono" id="pono" ><p class="form-check-label" style="text-align:center">' +
+        row +
+        '</p></td><td><p class="form-check-label" name="stcode"  id="stcode' +
+        row +
+        '" style="text-align:center">' +
+        stcode +
+        '</p></td><td><p class="form-check-label" name="stname1"  id="stname1' +
+        row +
+        '" style="text-align:left">' +
+        stname1 +
+        '</p></td><td><input type="text" class="form-control" name="amount"  id="amount' +
+        row +
+        '"  onChange="getTotal(' +
+        row +
+        ');" value="' +
+        amount +
+        '"></td><td><div class="input-group"><input type="text" class="form-control" name="unit" id="unit' +
+        row + '" value="' +
+        unit +
+        '" readonly><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit" data-whatever="' +
+        row +
+        ',tablePoDetail,' +
+        stcode +
+        '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
+        row +
+        ',\'add\')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
+    );
 
-                if (result.status == 1) {
-
-                    var all_row = $('#tableEditSODetail tr').length;
-
-                    $('#tableEditSODetail').append(
-                        '<tr id="new' + all_row +
-                        '" ><td><p class="form-control-static" style="text-align:center">' +
-                        all_row +
-                        '</p></td><td><p class="form-control-static" name="stcode1"  id="stcode1' +
-                        all_row +
-                        '" style="text-align:center">' +
-                        id +
-                        '</p></td><td><p class="form-control-static" name="stname1"  id="stname1' +
-                        all_row +
-                        '" style="text-align:left" >' +
-                        result.stname1 +
-                        '</p></td><td><input type="number" class="form-control" name="amount1"  id="amount1' +
-                        all_row +
-                        '" min="1" value="1"></td><td><div class="input-group"><input type="text" class="form-control" name="unit1" id="unit1' +
-                        all_row + '" value="' +
-                        result.unit +
-                        '" disabled><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit" data-whatever="' +
-                        all_row +
-                        ',tableSODetail,' +
-                        id +
-                        '" type="button"><span class="fa fa-search"></span></button></span></div></td><td><button type="button" onClick="onDelete_MainTable(' +
-                        all_row +
-                        ',\'add\')"; class="btn btn-danger form-control" ><i class="fa fa fa-times" aria-hidden="true"></i class=> </button></td></tr>'
-                    );
+    getTotal(row);
 
 
-                    onSelectSO($("#editsfcode").val());
-                    // console.log(result.sql);
-                } else {
-                    alert(result.message);
-                    $("#editsocode").prop("disabled", true);
-                    $("#editcuscode").prop("disabled", true);
-                    $("#editcusname").prop("disabled", true);
-                    $("#edittdname").prop("disabled", true);
-                    $("#edittel").prop("disabled", true);
-                    $("#editaddress").prop("disabled", true);
-                    // console.log(result.message);
-                }
+}
 
+$('#modal_add').on('show.bs.modal', function(event) {
 
-            }
-        });
+    $("#add_wodate").val(new Date().toISOString().substring(0, 10));
+    
+    $.ajax({
+        type: "POST",
+        url: "ajax/get_wocode.php",
+        success: function(result) {
 
-    }
+            $("#add_wocode").val(result.wocode);
 
-
-
+        }
+    });
 });
 
-function onDelete_MainTable(code, type) {
+$('#modal_edit').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget);
+    var wocode = button.data('whatever');
+    var modal = $(this);
 
-    // alert(code)
-    if (confirm("ยืนยันการลบรายการ")) {
+    $("#tableEditWODetail tbody").empty();
 
-        if (type === 'add')
-            $("#new" + code).remove();
-        else {
-            // alert(code)
+    $.ajax({
+        type: "POST",
+        url: "ajax/getsup_wo.php",
+        data: "idcode=" + wocode,
+        success: function(result) {
+
+            // alert(result)
+            $("#wocode").val(result.wocode);
+            $("#wodate").val(result.wodate);
+            $("#shift").val(result.shift);
+            $("#location").val(result.location);
+            $("#remark").val(result.remark);
+
             $.ajax({
                 type: "POST",
-                url: "ajax/deletesup_sf.php",
-                data: "code=" + code,
+                url: "ajax/getsup_wodetail.php",
+                data: "idcode=" + wocode,
                 success: function(result) {
-                    if (result.status == 1) // Success
-                    {
-                        $("#" + code).remove();
-                    } else // Err
-                    {
-                        alert(result.message);
+                    for (count = 0; count < result.stcode.length; count++) {
+
+                        $('#tableEditWODetail tbody').append(
+                            '<tr id="' + result.stcode[count] +
+                            '" ><td name="rrno" id="rrno" ><p class="form-control-static" style="text-align:center">' +
+                            result.wono[count] +
+                            '</p></td><td><p class="form-control-static" style="text-align:center">' +
+                            result
+                            .stcode[count] +
+                            '</p></td><td> <p class="form-control-static" style="text-align:left">' +
+                            result.stname1[count] +
+                            '</p></td><td><input type="text" class="form-control" name="amount"  id="amount' +
+                            result.wono[count] +
+                            '"  value="' +
+                            result.amount[count] +
+                            '" readonly></td><td><div class="input-group"><input type="text" class="form-control" name="unit" id="unit' +
+                            result.wono[count] + '" value="' +
+                            result.unit[count] +
+                            '" readonly><span class="input-group-btn"><button class="btn btn-default" data-toggle="modal" data-target="#modal_unit" data-whatever="' +
+                            result.wono[count] +
+                            ',tableEditWODetail," type="button"><span class="fa fa-search"></span></button></span></div></td></tr>'
+                        );
+
+
                     }
-                    // alert(result);
+
                 }
             });
         }
-    }
+    });
+
+    $("#divfrmEditGR").show();
+
+    $("#tableEditGRDetail tbody").empty();
+});
+
+function onClick_unit(unit, target) {
+
+    var row = target.split(',')[0];
+    var id = target.split(',')[1];
+    var stcode = target.split(',')[2];
+
+    // alert(target + ' ' + stcode);
+    $('#unit' + row).val(unit);
+
 }
 
+function onDelete_MainTable(row) {
+    var tmpstcode = [];
+    var tmpstname1 = [];
+    var tmpunit = [];
+    var tmpamount = [];
+    var tmpsellprice = [];
+    var tmpdiscount = [];
+    var all_row = $('#tableWODetail tbody tr').length;
 
+    for (var i = row + 1; i <= all_row; i++) {
+        tmpstcode.push($('#stcode' + i).text());
+        tmpstname1.push($('#stname1' + i).text());
+        tmpamount.push($('#amount' + i).val());
+        tmpunit.push($('#unit' + i).val());
+        tmpsellprice.push($('#price' + i).val());
+        tmpdiscount.push($('#discount' + i).val());
+    }
 
-// ยกเลิกอนุมัติการขาย
-$("#btnCancel").click(function() {
-    let so_code = $("#editsfcode").val();
+    for (var d = row; d <= all_row; d++)
+        $("#new" + d).remove();
 
+    for (var j = 0; j < tmpstcode.length; j++)
+        onCreate_detail($('#tableWODetail tr').length, tmpstcode[j], tmpstname1[j], tmpamount[j], tmpunit[j],
+            tmpsellprice[j], tmpdiscount[j])
 
-    if (confirm("คุณต้องการยกเลิก  Sales Forecast " + so_code + " หรือไม่")) {
-        // alert($("#frmEditSO").serialize())
-        $.ajax({
-            type: "POST",
-            url: "ajax/cancel_so.php",
-            data: "socode=" + so_code,
-            success: function(result) {
-                alert(result["message"]);
-                window.location.reload();
-            }
-        });
-    } 
-});
+    // onCreate_detail(tmpstcode[j], tmpstname1[j], tmpunit[j], tmpsellprice[j]);
 
-// คืนค่าอนุมัติการขาย
-$("#btnActive").click(function() {
-    let so_code = $("#editsfcode").val();
+}
 
-
-    if (confirm("คุณต้องการคืนค่า Sales Forecast " + so_code + " หรือไม่")) {
-        // alert($("#frmEditSO").serialize())
-        $.ajax({
-            type: "POST",
-            url: "ajax/restore_so.php",
-            data: "socode=" + so_code,
-            success: function(result) {
-                alert(result["message"]);
-                window.location.reload();
-            }
-        });
-    } 
-});
-
-
-
-//Refresh
 $("#btnRefresh").click(function() {
-    RefreshPage();
+    window.location.reload();
+});
+
+// กดยืนยันเพิ่ม WO
+$("#frmAddWO").submit(function(event) {
+    event.preventDefault();
+
+    var amount = [];
+    var stcode = [];
+    var unit = [];
+
+
+    $('#tableWODetail tbody tr').each(function(key) {
+        stcode.push($(this).find("td #stcode" + (++key)).text());
+    });
+    $('#tableWODetail tbody tr').each(function(key) {
+        amount.push($(this).find("td #amount" + (++key)).val());
+    });
+    $('#tableWODetail tbody tr').each(function(key) {
+        unit.push($(this).find("td #unit" + (++key)).val());
+    });
+
+    // alert(unit);
+
+    if (stcode != 0) {
+
+        $.ajax({
+            type: "POST",
+            url: "ajax/add_wo.php",
+            data: $("#frmAddWO").serialize() + "&amount=" + amount + "&stcode=" + stcode +
+                "&unit=" + unit,
+            success: async function(result) {
+                if (result.status == 1) {
+                    await Swal.fire('สำเร็จ', result.message, 'success');
+                    window.location.reload();
+                    // console.log(result.sql);
+                } else {
+                    Swal.fire('เกิดข้อผิดพลาด', result.message, 'error');
+                    console.log(result.message);
+                }
+            }
+        });
+    } else {
+        Swal.fire('เกิดข้อผิดพลาด', "กรุณาเพิ่มรายการสินค้า", 'error');
+    }
+
+});
+
+// กดยืนยันแก้ไข GR
+$("#frmEditGR").submit(function(event) {
+    event.preventDefault();
+
+    // alert(stcode)
+
+    $.ajax({
+        type: "POST",
+        url: "ajax/edit_gr.php",
+        data: $("#frmEditGR").serialize(),
+        success: async function(result) {
+            if (result.status == 1) {
+                await Swal.fire('สำเร็จ', result.message, 'success');
+                window.location.reload();
+                // console.log(result.sql);
+            } else {
+                Swal.fire('เกิดข้อผิดพลาด', "รหัสซ้ำ", 'error');
+                console.log(result.message);
+            }
+        }
+    });
+
 });
 </script>

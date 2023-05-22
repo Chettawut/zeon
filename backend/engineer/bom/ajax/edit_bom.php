@@ -12,7 +12,7 @@
 
         $strSQL = "UPDATE bom SET amount ='". $amount[$key] ."', unit ='". $unit[$key] ."'  ";
         $strSQL .= ",s_date='".date("Y-m-d")."',s_time='".date("H:i:s")."'";
-        $strSQL .= "WHERE code= '".$code[$key]."' ";
+        $strSQL .= "WHERE code= '".$code[$key]."'  ";
         
         $query = mysqli_query($conn,$strSQL);
         }
