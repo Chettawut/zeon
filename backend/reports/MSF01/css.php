@@ -1,16 +1,19 @@
 <style>
-    table {
-  text-align: center;
+.lefttable {
+    text-align: left;
 }
-table, th, td {
-border: 2px solid black;
+thead,th{
+    text-align:center;
+    border: 3px solid black;
 }
-
-thead td ,td{
-  border: 2px solid black;
+td{
+    border: 3px solid black;
 }
-
-tbody th, td{
-  border: 2px solid black;
+.deletetable{
+    border-bottom: 0px;
+    border-right: 0px;
+}
+tr{
+    text-align:center;
 }
 </style>

@@ -58,6 +58,32 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-lg-12 col-12">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">ปรับเปลี่ยนเงื่อนไข</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Reservation Month</label>
+                                                <input type="month" class="form-control" name="sfdate" id="sfdate">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-6 col-6">
                             <form data-ajax="false" target="_blank" method="post">
                                 <div data-role="fieldcontain">
@@ -84,122 +110,109 @@
                     <div class="row">
                         <div class="col-lg-12 col-12">
                             <div id="table">
-                                <table style="background-color:#FFFFFF;"  class="table table-sm " >
+                                <table class="table table-sm">
                                     <thead>
                                         <tr>
-                                            <td style="font-size: 30px; background-color:#66FF66;" rowspan="2">Month</td>
-                                            <th style=" border: 2px solid black; font-size: 15px; background-color:#66FF66;" colspan="15">Product</th>
-                                            <td style="font-size: 30px; background-color:#66FF66;" rowspan="2">Total</td>
-                                        </tr>
-                                        <tr style="background-color:#aaffaa;">
-                                            <th style=" border: 2px solid black;" scope="row">PT1</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT2</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT3</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT4</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT5</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT6</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT7</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT8</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT9</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT10</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT11</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT12</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT13</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT14</th>
-                                            <th style=" border: 2px solid black;" scope="row">PT15</th>
+                                            <th colspan="2" scope="row">A</th>
+                                            <th>Jan-23</th>
+                                            <th>Feb-23</th>
+                                            <th>Mar-23</th>
+                                            <th>Apr-23</th>
+                                            <th>May-23</th>
+                                            <th>Jun-23</th>
+                                            <th>Jul-23</th>
+                                            <th>Aug-23</th>
+                                            <th>Sep-23</th>
+                                            <th>Oct-23</th>
+                                            <th>Nov-23</th>
+                                            <th>Dec-23</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th style="background-color:#ffd4aa;" scope="row">JAN</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF	;"></td>
+                                            <td class="lefttable" colspan="2" scope="row">Beg of Month </td>
+                                            <td scope="row">26,275</td>
+                                            <td scope="row">13,675</td>
+                                            <td scope="row">51,375</td>
+                                            <td scope="row">48,675</td>
+                                            <td scope="row">44,775</td>
+                                            <td scope="row">39,875</td>
+                                            <td scope="row">30,975</td>
+                                            <td scope="row">13,575</td>
+                                            <td scope="row">19,275</td>
+                                            <td scope="row">23,275</td>
+                                            <td scope="row">42,075</td>
+                                            <td scope="row">14,675</td>
+                                            <td scope="row"></td>
                                         </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;" scope="row">FEB</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
+                                        <!-- บรรทัดแรก -->
+                                        <tr >
+                                            <td height="70" class="lefttable" colspan="2" scope="row">Product</td>
+                                            <td scope="row"></td>
+                                            <td scope="row">39,600</td>
+                                            <td scope="row"></td>
+                                            <td scope="row"></td>
+                                            <td scope="row"></td>
+                                            <td scope="row"></td>
+                                            <td scope="row"></td>
+                                            <td scope="row">23,100</td>
+                                            <td scope="row">26,400</td>
+                                            <td scope="row">46,200</td>
+                                            <td scope="row"></td>
+                                            <td scope="row">52,800</td>
+                                            <td scope="row">188,100</td>
                                         </tr>
+                                        <!-- บรรทัด2 -->
                                         <tr>
-                                            <th  style="background-color:#ffd4aa;"scope="row">MAR</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
+                                            <td height="70" style="text-align:left" colspan="2" scope="row">Sales</td>
+                                            <td class="font-weight-bold" scope="row">12,600</td>
+                                            <td class="font-weight-bold" scope="row">1,900</td>
+                                            <td class="font-weight-bold" scope="row">2,700</td>
+                                            <td class="font-weight-bold" scope="row">3,900</td>
+                                            <td class="font-weight-bold" scope="row">4,900</td>
+                                            <td class="font-weight-bold" scope="row">8,900</td>
+                                            <td class="font-weight-bold" scope="row">17,400</td>
+                                            <td class="font-weight-bold" scope="row">17,40</td>
+                                            <td class="font-weight-bold" scope="row">22,400</td>
+                                            <td class="font-weight-bold" scope="row">27,400</td>
+                                            <td class="font-weight-bold" scope="row">27,400</td>
+                                            <td class="font-weight-bold" scope="row">32,400</td>
+                                            <td scope="row">179,300</td>
                                         </tr>
+                                        <!-- บรรทัด3 -->
                                         <tr>
-                                            <th  style="background-color:#ffd4aa;"scope="row">APR</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
+                                            <td style="text-align:left" colspan="2" scope="row">End of Month</td>
+                                            <td scope="row">13,675</td>
+                                            <td scope="row">51,375</td>
+                                            <td scope="row">48,675</td>
+                                            <td scope="row">44,775</td>
+                                            <td scope="row">39,975</td>
+                                            <td scope="row">30,975</td>
+                                            <td scope="row">13,575</td>
+                                            <td scope="row">19,275</td>
+                                            <td scope="row">23,275</td>
+                                            <td scope="row">42,075</td>
+                                            <td scope="row">14,675</td>
+                                            <td scope="row">35,075</td>
+                                            <td scope="row">1.08</td>
                                         </tr>
+                                        <!-- บรรทัด4 -->
                                         <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">MAY</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">JUN</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">JUL</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">AUG</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">SEP</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">OCT</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">NOV</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffd4aa;"scope="row">DEC</th>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                                            <td></td><td></td><td></td><td style="background-color:#E0FFFF;"></td>
-                                        </tr>
-                                        <tr>
-                                            <th style="background-color:#ffff56;" scope="row">Total</th>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
-                                            <td style="background-color:#ffff56;"></td>
+                                            <td style="text-align:left" colspan="2" scope="row">Inventory ratio</td>
+                                            <td scope="row">13,675</td>
+                                            <td scope="row">51,375</td>
+                                            <td scope="row">48,675</td>
+                                            <td scope="row">44,775</td>
+                                            <td scope="row">39,975</td>
+                                            <td scope="row">30,975</td>
+                                            <td scope="row">13,575</td>
+                                            <td scope="row">19,275</td>
+                                            <td scope="row">23,275</td>
+                                            <td scope="row">42,075</td>
+                                            <td scope="row">14,675</td>
+                                            <td scope="row">1.08</td>
+                                            <td class="deletetable"></td>
                                         </tr>
                                     </tbody>
                                 </table>
