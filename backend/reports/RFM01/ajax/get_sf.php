@@ -4,9 +4,10 @@
 
 	// $_POST['sfdate']='2023-03';
 
-	$sql = "SELECT a.socode ,b.amount ,b.stcode,c.stname1,b.unit,c.type ";
-	$sql .= "FROM sfmaster a inner join sfdetail as b on (a.socode=b.socode) inner join stock as c on (b.stcode=c.stcode) ";  
-	$sql .= " where a.sfdate = '".$_POST['sfdate']."' ";  
+	$sql = "SELECT sum(b.amount) as amount ,c.stcode,d.stname1,b.unit,d.type ";
+	$sql .= "FROM sfmaster a inner join sfdetail as b on (a.socode=b.socode) inner join bom as c on (b.stcode=c.stcodemain) inner join stock as d on (c.stcode=d.stcode)  ";  
+	$sql .= " where a.sfdate = '".$_POST['sfdate']."' and b.supstatus != 'Cancel' ";  
+	$sql .= " GROUP by stcode ";  
 
 	$query = mysqli_query($conn,$sql);
 

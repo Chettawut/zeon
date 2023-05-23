@@ -1,104 +1,61 @@
 <div class="modal fade bd-example-modal-xl" tabindex="-1" id="modal_edit" role="dialog"
     aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content w3-flat-turquoise">
             <div class="modal-header bg-gradient-secondary">
-                <h5 class="modal-title">แก้ไขข้อมูลใบสั่งซื้อ</h5>
+                <h5 class="modal-title">Edit Sales Forecast</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" style="max-height: 700px;">
-                <form name="frmEditPO" id="frmEditPO" onkeydown="return event.key != 'Enter';">
-
-                    <div class="form-row">
-                        <div class="form-group col-md-2">
-                            <label >เลขที่ใบสั่งซื้อ</label>
-                            <input type="text" class="form-control" name="editpocode" id="editpocode" disabled>
+            <form name="frmEditSO" id="frmEditSO" method="POST" style="padding:10px;" action="javascript:void(0);">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-lg-3 col-12">
+                            <label class="col-form-label">SF No.</label>
+                            <input type="text" class="form-control" name="editsfcode" id="editsfcode" disabled>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label>รหัสผู้ขาย</label>
-
-                            <input type="text" class="form-control" name="editsupcode" id="editsupcode" disabled>
-
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label >ชื่อผู้ขาย</label>
-                            <input type="text" class="form-control" name="edittdname" id="edittdname" disabled>
+                        <div class="form-group col-lg-5 col-12">
+                            <label class="col-form-label">SF Date</label>
+                            <input type="month" class="form-control" size="4" name="editsfdate" id="editsfdate">
                         </div>
 
                     </div>
-
-                    <div class="form-group col-md-12">
-                        <label >ที่อยู่ผู้ขาย</label>
-                        <input type="text" class="form-control" size="4" name="editaddress" id="editaddress" disabled>
+                    <div class="row">
+                        <div class="form-group col-lg-12 col-12">
+                            <label for="comment">หมายเหตุ:</label>
+                            <textarea class="form-control" rows="2" name="editremark" id="editremark"></textarea>
+                        </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label >วันที่สั่งซื้อ</label>
-                            <input type="date" class="form-control" size="4" name="editpodate" id="editpodate">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label >วันที่นัดส่งของ</label>
-                            <input type="date" class="form-control" name="editdeldate" id="editdeldate">
-                        </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
 
-                        <div class="form-group col-md-4">
-                            <label>การชำระเงิน</label>
-                            <select class="form-control" name="editpayment" id="editpayment">
-                                <option value="เงินสด" selected>เงินสด</option>
-                                <option value="30 วัน">30 วัน</option>
-                                <option value="45 วัน">45 วัน</option>
-                                <option value="60 วัน">60 วัน</option>
-                                <option value="90 วัน">90 วัน</option>
-                                <option value="120 วัน">120 วัน</option>
-                            </select>
-                        </div>
+                            <button type="button" id="btnAddSOdetail2" class="btn btn-success" data-toggle="modal"
+                                data-target="#modal_stock2"><i class="fa fa fa-tags" aria-hidden="true"></i>
+                                เพิ่มรายการ</button>
 
+                            <button type="button" id="btnCancel" style="display:none" class="btn btn-danger"><i
+                                    class="fa fa-times-circle" aria-hidden="true"></i>
+                                ยกเลิกใบสั่งขาย</button>
+                            <button type="button" id="btnActive" style="display:none" class="btn btn-warning"><i
+                                    class="fa fa-check-circle" aria-hidden="true"></i>
+                                คืนค่าให้ใบสั่งขาย</button>
+                        </div>
                     </div>
+                    <br>
 
-                    <div class="form-row">
-
-                        <div class="form-group col-md-4">
-                            <label >ใบเสนอราคา</label>
-                            <input type="text" class="form-control" name="editpoqua" id="editpoqua">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label >สกุลเงิน</label>
-                            <select class="form-control" name="editcurrency" id="editcurrency">
-                                <option value="บาท" selected>บาท</option>
-                                <option value="ดอลล่า">ดอลล่า</option>
-                                <option value="เยน">เยน</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label >ภาษี </label>
-                            <div class="radio">
-                                <label class="radio-inline">
-                                    <input type="radio" name="editvat" value="Y" checked> มี
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="editvat" value="N"> ไม่มี
-                                </label>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <table name="tableEditPoDetail" id="tableEditPoDetail" class="table table-bordered table-striped">
+                    <table name="tableEditSODetail" id="tableEditSODetail" class="table table-bordered table-striped">
                         <thead style="background-color:#D6EAF8;">
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>รหัสสินค้า</th>
-                                <th>รายการสินค้า</th>
-                                <th>จำนวน</th>
-                                <th>หน่วย</th>
-                                <th>ราคาขาย</th>
-                                <th>ส่วนลด</th>
-                                <th>จำนวนเงิน (บาท)</th>
-                                <th></th>
+                                <th style="width:10%;text-align:center">No.</th>
+                                <th style="width:15%;text-align:center">Product Code</th>
+                                <th style="width:35%;text-align:center">Product Name</th>
+                                <th style="width:15%;text-align:center">Amount</th>
+                                <th style="width:15%;text-align:center">Unit</th>
+                                <th style="width:10%;text-align:center"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,15 +63,14 @@
 
                         </tbody>
                     </table>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <div class="col text-center">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-                    <button type="submit" id="btnEditPO" form="frmEditPO" class="btn btn-primary">แก้ไข</button>
                 </div>
-            </div>
-
+                <div class="modal-footer">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+                        <button type="submit" form="frmEditSO" class="btn btn-primary">แก้ไข</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

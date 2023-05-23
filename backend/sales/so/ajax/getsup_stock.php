@@ -12,7 +12,6 @@
 		"unit" => array(),
 		"stmin1" => array(),
 		"stmin2" => array(),
-		"sellprice" => array(),
 		"status" => array()
 		
         );
@@ -23,7 +22,6 @@
 			array_push($json_result['unit'],$row["unit"]);
 			array_push($json_result['stmin1'],$row["stmin1"]);
 			array_push($json_result['stmin2'],$row["stmin2"]);
-			array_push($json_result['sellprice'],$row["sellprice"]);
 			array_push($json_result['status'],$row["status"]);
         }
         echo json_encode($json_result);

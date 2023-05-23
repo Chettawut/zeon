@@ -49,8 +49,10 @@ function getList(sfdate) {
                 // result.stname1[count] + '</td><td style="text-align:right">' +
                 // result.amount[count] + '</td><td  style="text-align:center">' + result
                 // .unit[count] + '</td></tr>');
-
+                console.log(arraySearch(stcode, result.stcode[count]))
             }
+
+            console.log(stcode)
 
             for (count = 0; count < stcode.length; count++) {
                 $('#tableStock tbody').append(

@@ -20,80 +20,88 @@
             </div>
         </div>
 
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">Systems</li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/sales/so" class="nav-link">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-header">Systems</li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/sales/so" class="nav-link">
                         <i class="nav-icon fas fa-chart-line"></i>
-                        <p>
-                            Sales forecast
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/actual product/ap" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Actual product
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/store/inventory" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-check"></i>
-                        <p>
-                           Goods receipt
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-header">Data</li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/store/inventory" class="nav-link">
-                        <i class="nav-icon fas fa-boxes"></i>
-                        <p>
-                            Inventory
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/store/inventory" class="nav-link">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Stock card
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/engineer/bom" class="nav-link">
-                        <i class="nav-icon fas fa-book-open"></i>
-                        <p>
-                            Bill of Materials
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/unit" class="nav-link">
-                        <i class="nav-icon fas fas fa-box"></i>
-                        <p>
-                            Unit
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-header">Reports</li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/reports/MSF01" class="nav-link">
-                        <i class="nav-icon far fa-calendar-alt"></i>
-                        <p>
-                            Monthly Sales Forecast
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo PATH; ?>/backend/reports/RFM01" class="nav-link">
-                        <i class="nav-icon fas fa-tasks"></i>
-                        <p>
+                            <p>
+                                Sales forecast
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/production/pp" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                            Production Plan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/production/wo" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                                Work order
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/store/gr" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                            Goods Receipt
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Data</li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/store/inventory" class="nav-link">
+                            <i class="nav-icon fa fa-cube"></i>
+                            <p>
+                                Inventory
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/store/supplier" class="nav-link">
+                            <i class="nav-icon fa fa-cube"></i>
+                            <p>
+                            Supplier
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/engineer/bom" class="nav-link">
+                            <i class="nav-icon fas fa-book-open"></i>
+                            <p>
+                                Bill of Materials
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/unit" class="nav-link">
+                            <i class="nav-icon fas fas fa-box"></i>
+                            <p>
+                                Unit
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Reports</li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/reports/MSF01" class="nav-link">
+                            <i class="nav-icon fas  fa-file-alt"></i>
+                            <p>
+                                Monthly Sales Forecast
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo PATH; ?>/backend/reports/RFM01" class="nav-link">
+                            <i class="nav-icon fas fa-paste "></i>
+                            <p>
                             Reservation Of Material
                         </p>
                     </a>

@@ -6,7 +6,7 @@
 
 	$sql = "SELECT a.code,a.stcode,a.stname1,a.unit,a.status ";
 	$sql .= "FROM stock a inner join stock_level as b on (a.stcode=b.stcode) ";  	
-	$sql .= " where b.places = 1 and a.status = 'Y' ";  	
+	$sql .= " where b.places = 1 and a.type = 'FG' and a.status = 'Y' ";  	
 
 	$query = mysqli_query($conn,$sql);
 
