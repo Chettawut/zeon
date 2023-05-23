@@ -49,14 +49,11 @@
                             class="table table-striped table-valign-middle table-bordered table-hovers text-nowarp">
                             <thead class="sticky-top table-defalut bg-gray">
                                 <tr>
-                                    <th style="text-align:center">ลำดับ</th>
-                                    <th style="text-align:left">ใบสั่งซื้อ</th>
-                                    <th style="text-align:center">รหัสสินค้า</th>
+                                    <th style="width:100px;text-align:center">ลำดับ</th>
+                                    <th style="width:100px;text-align:center">รหัสสินค้า</th>
                                     <th style="width:300px;text-align:left">รายการสินค้า</th>
-                                    <th style="width:100px;text-align:center">หน่วย</th>
-                                    <th style="text-align:center">จำนวนรับแล้ว</th>
-                                    <th style="text-align:center">จำนวนรับ</th>
-                                    <th style="width:120px;text-align:center">สถานะ</th>
+                                    <th style="width:100px;text-align:center">จำนวน</th>
+                                    <th style="width:100px;text-align:center">หน่วย</th>       
                                 </tr>
                             </thead>
                             <tbody>

@@ -1,6 +1,6 @@
 <?php
 	header('Content-Type: application/json');
-	include('../../../conn.php');
+	include_once('../../../conn.php');
 
 	$sql = "SELECT * FROM `unit` where status = 'Y'";
 	$query = mysqli_query($conn,$sql);

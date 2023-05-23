@@ -89,7 +89,6 @@ include_once('../../conn.php');
                                         <tr>
                                             <th>เลขที่ GR</th>
                                             <th>วันที่รับ</th>
-                                            <th>เลขที่ PO</th>
                                             <th>รหัสพัสดุ</th>
                                             <th style="text-align:left">รายการสินค้า</th>
                                             <th style="text-align:center">สถานะ</th>
