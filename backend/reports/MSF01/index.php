@@ -54,9 +54,13 @@
                     </div>
                 </div>
             </div>
-
             <section class="content">
                 <div class="container-fluid">
+                    <button style="color:white;background : #148F77; font-size:20px;text-shadow:2px 2px 4px #000000;"
+                        type="button" id="btnRefresh" class="btn">
+                        <i class="fas fa-sync-alt" aria-hidden="true"></i> Refresh</button>
+                    <br>
+                    <br>
                     <div class="row">
                         <div class="col-lg-12 col-12">
                             <div class="card card-default">
@@ -69,68 +73,42 @@
                                         </button>
                                     </div>
                                 </div>
-                                <!-- <div class="card-body">
+                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Reservation Month</label>
-                                                <input type="month" class="form-control" name="sfdate" id="sfdate">
-                                                </select>
+                                                <label>รหัสสินค้า</label>
+                                                <div class="input-group"><input type="text" class="form-control"
+                                                        name="stcode" id="stcode" value="100001" readonly>
+                                                    <span class="input-group-btn"><button class="btn btn-default"
+                                                            data-toggle="modal" data-target="#modal_stock"
+                                                            data-whatever="" type="button">
+                                                            <span class="fa fa-search"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                            <label>Reservation Month</label>
+                                                <input type="number" class="form-control"  name="yeardate" id="yeardate" min="1900" max="2099" step="1"  />
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-6">
-                            <form data-ajax="false" target="_blank" method="post">
-                                <div data-role="fieldcontain">
-
-                                    <!-- <div class="btn-group" id="btnAddSO" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-success" data-toggle="modal"
-                                            data-target="#modal_add"><i class="fa fa fa-tags" aria-hidden="true"></i>
-                                            เพิ่มรหัสวัสดุ</button>
-                                        <button type="button" id="btnRefresh" class="btn btn-primary"><i
-                                                class="fas fa-sync-alt" aria-hidden="true"></i> Refresh</button>
-                                    </div>
-                                    <div class="btn-group" id="btnBack" style="display:none;" role="group"
-                                        aria-label="Basic example">
-                                        <button type="button" class="btn btn-success"><i class="fa fa fa-tags"
-                                                aria-hidden="true"></i>
-                                            ย้อนกลับ</button>
-                                    </div> -->
-
-
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-12">
                             <div id="table">
-                                <table class="table table-sm">
+                                <table id="tableData" class="table table-sm">
                                     <thead>
-                                        <tr>
-                                            <th colspan="2" scope="row">A</th>
-                                            <th>Jan-23</th>
-                                            <th>Feb-23</th>
-                                            <th>Mar-23</th>
-                                            <th>Apr-23</th>
-                                            <th>May-23</th>
-                                            <th>Jun-23</th>
-                                            <th>Jul-23</th>
-                                            <th>Aug-23</th>
-                                            <th>Sep-23</th>
-                                            <th>Oct-23</th>
-                                            <th>Nov-23</th>
-                                            <th>Dec-23</th>
-                                            <th>Total</th>
-                                        </tr>
+                                        
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <!-- <tr>
                                             <td class="lefttable" colspan="2" scope="row">Beg of Month </td>
                                             <td scope="row">26,275</td>
                                             <td scope="row">13,675</td>
@@ -145,9 +123,9 @@
                                             <td scope="row">42,075</td>
                                             <td scope="row">14,675</td>
                                             <td scope="row"></td>
-                                        </tr>
+                                        </tr> -->
                                         <!-- บรรทัดแรก -->
-                                        <tr >
+                                        <!-- <tr>
                                             <td height="70" class="lefttable" colspan="2" scope="row">Product</td>
                                             <td scope="row"></td>
                                             <td scope="row">39,600</td>
@@ -162,9 +140,9 @@
                                             <td scope="row"></td>
                                             <td scope="row">52,800</td>
                                             <td scope="row">188,100</td>
-                                        </tr>
+                                        </tr> -->
                                         <!-- บรรทัด2 -->
-                                        <tr>
+                                        <!-- <tr>
                                             <td height="70" style="text-align:left" colspan="2" scope="row">Sales</td>
                                             <td class="font-weight-bold" scope="row">12,600</td>
                                             <td class="font-weight-bold" scope="row">1,900</td>
@@ -179,9 +157,9 @@
                                             <td class="font-weight-bold" scope="row">27,400</td>
                                             <td class="font-weight-bold" scope="row">32,400</td>
                                             <td scope="row">179,300</td>
-                                        </tr>
+                                        </tr> -->
                                         <!-- บรรทัด3 -->
-                                        <tr>
+                                        <!-- <tr>
                                             <td style="text-align:left" colspan="2" scope="row">End of Month</td>
                                             <td scope="row">13,675</td>
                                             <td scope="row">51,375</td>
@@ -196,9 +174,9 @@
                                             <td scope="row">14,675</td>
                                             <td scope="row">35,075</td>
                                             <td scope="row">1.08</td>
-                                        </tr>
+                                        </tr> -->
                                         <!-- บรรทัด4 -->
-                                        <tr>
+                                        <!-- <tr>
                                             <td style="text-align:left" colspan="2" scope="row">Inventory ratio</td>
                                             <td scope="row">13,675</td>
                                             <td scope="row">51,375</td>
@@ -213,7 +191,7 @@
                                             <td scope="row">14,675</td>
                                             <td scope="row">1.08</td>
                                             <td class="deletetable"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -224,8 +202,7 @@
             </section>
         </div>
 
-        <?php include_once('modal/modal_add.php');?>
-        <?php include_once('modal/modal_edit.php');?>
+        <?php include_once('modal/modal_stock.php');?>
 
     </div>
 

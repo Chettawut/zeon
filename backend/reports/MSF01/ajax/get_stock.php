@@ -4,7 +4,7 @@
 
 	$sql = "SELECT b.amount as amount1,a.type,a.stcode,a.stname1,a.unit,a.status,a.code ";
 	$sql .= "FROM stock a inner join stock_level as b on (a.stcode=b.stcode) ";  
-	$sql .= " where b.places = 1 ";  
+	$sql .= " where b.places = 1 and a.type='FG' ";  
 
 	$query = mysqli_query($conn,$sql);
 
