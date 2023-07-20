@@ -1,7 +1,7 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
 
-    <ul class="navbar-nav" id="TopDashboard" style="display:none;">
+    <ul class="navbar-nav" id="TopDashboard" >
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="<?php echo PATH; ?>" role="button">
                 <i class="fas fa-bars"></i></a>

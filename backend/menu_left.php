@@ -28,7 +28,7 @@
                         <a href="<?php echo PATH; ?>/backend/sales/so" class="nav-link">
                         <i class="nav-icon fas fa-chart-line"></i>
                             <p>
-                                Sales forecast
+                                Sales Forecast
                             </p>
                         </a>
                     </li>
@@ -44,7 +44,7 @@
                         <a href="<?php echo PATH; ?>/backend/production/wo" class="nav-link">
                             <i class="nav-icon fas fa-clipboard-list"></i>
                             <p>
-                                Work order
+                                Work Order
                             </p>
                         </a>
                     </li>
