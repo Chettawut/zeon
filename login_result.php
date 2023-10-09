@@ -19,36 +19,24 @@ if ($stmt = $conn->prepare('SELECT firstname,lastname,id,password,type,status FR
 
 }
 
+
 if ($stmt->num_rows > 0) {
-	$stmt->bind_result($firstname,$lastname,$id,$password,$type,$status);
+	$stmt->bind_result($firstname,$lastname,$code,$password,$type,$status);
 	$stmt->fetch();
+ 
 	// Account exists, now we verify the password.
 	// Note: remember to use password_hash in your registration file to store the hashed passwords.
 	if (password_verify($_POST['password'], $password)) {
 
+		if($status=='Y')
+		{
 			session_regenerate_id();
 			$_SESSION['loggedin'] = TRUE;
 			$_SESSION['name'] = $_POST['username'];
 			$_SESSION['id'] = $id;
 			$_SESSION['firstname'] = $firstname;
 			$_SESSION['lastname'] = $lastname;
-		
-		if($status=='Y')
-		{
-			
-			
-			if($type=='01')
-			$_SESSION['type'] = 'Manager';
-			else if($type=='02')
-			$_SESSION['type'] = 'Manager';
-			else if($type=='03')
-			$_SESSION['type'] = 'Office';
-			else if($type=='04')
-			$_SESSION['type'] = 'Messenger';
-			else if($type=='05')
-			$_SESSION['type'] = 'Sales';
-			else if($type=='99')
-			$_SESSION['type'] = 'Admin';
+			$_SESSION['type'] = $type;			
 
 			
 			// echo 'Welcome ' . $_SESSION['name'] . '!';
