@@ -41,18 +41,13 @@ include_once('config.php');
 
                     <body>
                         <div class="login">
-                        <h1> <img src="img/logo_fb.png" width="80px;"></h1>
+                        <h1> <img src="<?php echo PATH; ?>/img/logo_fb.png" width="80px;"></h1>
                             <form action="login_result.php" method="post">
 
                                 <label for="username">
                                     <i class="fas fa-user"></i>
                                 </label>
                                 <input type="text" name="username" placeholder="Username" id="username" required>
-
-                                <label for="password">
-                                    <i class="fas fa-lock"></i>
-                                </label>
-                                <input type="password" name="password" placeholder="Password" id="password" required>
 
                                 <input type="submit" value="Login">
                             </form>
